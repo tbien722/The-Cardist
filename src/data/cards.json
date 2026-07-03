@@ -1,0 +1,124 @@
+{
+  "cards": [
+    {
+      "name": "Classic Blue",
+      "brand": "Bicycle",
+      "series": "Classics",
+      "acquired": "Pre Site",
+      "deckType": "bicycleblue"
+    },
+    {
+      "name": "Marquis",
+      "brand": "Bicycle",
+      "series": "Classics",
+      "acquired": "Pre Site",
+      "deckType": "marquis"
+    },
+    {
+      "name": "Fyrebird",
+      "brand": "Bicycle",
+      "series": "Classics",
+      "acquired": "Pre Site",
+      "deckType": "fyrebird"
+    },
+    {
+      "name": "Spellbound",
+      "brand": "Bicycle",
+      "series": "Classics",
+      "acquired": "Pre Site",
+      "deckType": "spellbound"
+    },
+    {
+      "name": "Cypher",
+      "brand": "Bicycle",
+      "series": "Classics",
+      "acquired": "Pre Site",
+      "deckType": "cypher"
+    },
+    {
+      "name": "Dragon Gold",
+      "brand": "Bicycle",
+      "series": "Dragon",
+      "acquired": "Pre Site",
+      "deckType": "gDragon"
+    },
+    {
+      "name": "Dragon Silver",
+      "brand": "Bicycle",
+      "series": "Dragon",
+      "acquired": "Pre Site",
+      "deckType": "sDragon"
+    },
+    {
+      "name": "Dragon Red",
+      "brand": "Bicycle",
+      "series": "Dragon",
+      "acquired": "Pre Site",
+      "deckType": "rDragon"
+    },
+    {
+      "name": "NOC Orange",
+      "brand": "NOC",
+      "series": "NOC",
+      "acquired": "Pre Site",
+      "deckType": "nocOrange"
+    },
+    {
+      "name": "Mastermind",
+      "brand": "Mastermind",
+      "series": "Keymaster",
+      "acquired": "Pre Site",
+      "deckType": "mastermind"
+    },
+    {
+      "name": "M&M Brown",
+      "brand": "M&M",
+      "series": "M&M",
+      "acquired": "Pre Site",
+      "deckType": "mmBrown"
+    },
+    {
+      "name": "M&M Yellow",
+      "brand": "M&M",
+      "series": "M&M",
+      "acquired": "Pre Site",
+      "deckType": "mmYellow"
+    },
+    {
+      "name": "M&M White",
+      "brand": "M&M",
+      "series": "M&M",
+      "acquired": "Pre Site",
+      "deckType": "mmWhite"
+    },
+    {
+      "name": "Stitch",
+      "brand": "Bicycle",
+      "series": "Disney",
+      "acquired": "Pre Site",
+      "deckType": "stitch"
+    },
+    {
+      "name": "Bees Red",
+      "brand": "Bees",
+      "series": "Classics",
+      "acquired": "Pre Site",
+      "deckType": "beeRed"
+    },
+    {
+      "name": "Aviator Red",
+      "brand": "Aviator",
+      "series": "Aviators",
+      "acquired": "Pre Site",
+      "deckType": "aviatorRed"
+    },
+    {
+      "name": "Aviator Blue",
+      "brand": "Aviator",
+      "series": "Aviators",
+      "acquired": "Pre Site",
+      "deckType": "aviatorBlue"
+    }
+  ]
+  
+}

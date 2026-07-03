@@ -1,0 +1,41 @@
+---
+import type { Card } from "../types/card";
+
+type Props = {
+  card: Card;
+};
+
+const { card } = Astro.props as Props;
+
+// Map deckType → image path
+const deckImages: Record<string, string> = {
+  bicycleblue: '/cards/bicycle-front-blue.jpg',
+  marquis: '/cards/bicycle-front-marquis.jpg',
+  fyrebird:'/cards/bicycle-front-fyrebird.jpg',
+  spellbound: '/cards/bicycle-front-spell.jpg',
+  cypher:'/cards/bicycle-front-cypher.jpg',
+  gDragon:'/cards/bicycle-front-gdragon.jpg',
+  sDragon:'/cards/bicycle-front-sdragon.jpg',
+  rDragon:'/cards/bicycle-front-rdragon.jpg',
+  nocOrange:'/cards/noc-front-nocorange.jpg',
+  mastermind:'/cards/keymaster-front-mastermind.jpg',
+  mmBrown:'/cards/mm-front-mmyellow.jpg',
+  mmYellow:'/cards/mm-front-mmyellow.jpg',
+  mmWhite:'/cards/mm-front-mmwhite.jpg',
+  stitch:'/cards/bicycle-front-stitch.jpg',
+  beeRed: '/cards/bee-front-beered.jpg'
+  // add more deck images here
+};
+
+// Fallback if deckType not found
+const backgroundUrl = deckImages[card.deckType || ''] || '/cards/drake-card.jpg';
+---
+
+<button
+  class="data-card"
+  style={`background: url('${backgroundUrl}') no-repeat center center; background-size: cover; border-radius: 4px;`}
+  data-card={JSON.stringify(card)}
+  data-brand={card.brand}
+  aria-label={`View details for ${card.name}`}
+>
+</button>
