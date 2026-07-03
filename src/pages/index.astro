@@ -10,15 +10,14 @@ import "../styles/global.css";
   </head>
   <body>
     <main>
+      <h1 class="site-title">The Cardist</h1>
       <section class="landing-grid">
-        <div>
-          <p class="landing-label">Decks</p>
-          <a class="landing-card" href={`${import.meta.env.BASE_URL}decks/`}></a>
-        </div>
-        <div>
-          <p class="landing-label">Cardistry</p>
-          <a class="landing-card" href={`${import.meta.env.BASE_URL}cardistry/`}></a>
-        </div>
+        <a class="landing-card" href={`${import.meta.env.BASE_URL}decks/`}>
+          <span class="landing-label">Decks</span>
+        </a>
+        <a class="landing-card" href={`${import.meta.env.BASE_URL}cardistry/`}>
+          <span class="landing-label">Cardistry</span>
+        </a>
       </section>
     </main>
   </body>
