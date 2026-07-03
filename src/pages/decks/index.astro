@@ -1,9 +1,9 @@
 ---
-import TopNav from "../../../../components/TopNav.astro";
-import type { Card } from "../../../../types/card";
-import rawData from "../../../../data/cards.json";
-import DataCard from "../../../../components/DataCard.astro";
-import "../../../../styles/global.css"
+import TopNav from "../../components/TopNav.astro";
+import type { Card } from "../../types/card";
+import rawData from "../../data/cards.json";
+import DataCard from "../../components/DataCard.astro";
+import "../../styles/global.css"
 
 const cards = (rawData.cards as Card[]).sort((a, b) => 
   a.name.localeCompare(b.name)
