@@ -10,26 +10,26 @@ const { card } = Astro.props as Props;
 
 // Map deckType → image path
 const deckImages: Record<string, string> = {
-  bicycleblue: '${base}cards/bicycle-front-blue.jpg',
-  marquis: '${base}cards/bicycle-front-marquis.jpg',
-  fyrebird:'${base}cards/bicycle-front-fyrebird.jpg',
-  spellbound: '${base}cards/bicycle-front-spell.jpg',
-  cypher:'${base}cards/bicycle-front-cypher.jpg',
-  gDragon:'${base}cards/bicycle-front-gdragon.jpg',
-  sDragon:'${base}cards/bicycle-front-sdragon.jpg',
-  rDragon:'${base}cards/bicycle-front-rdragon.jpg',
-  nocOrange:'${base}cards/noc-front-nocorange.jpg',
-  mastermind:'${base}cards/keymaster-front-mastermind.jpg',
-  mmBrown:'${base}cards/mm-front-mmyellow.jpg',
-  mmYellow:'${base}cards/mm-front-mmyellow.jpg',
-  mmWhite:'${base}cards/mm-front-mmwhite.jpg',
-  stitch:'${base}cards/bicycle-front-stitch.jpg',
-  beeRed: '${base}cards/bee-front-beered.jpg'
+  bicycleblue: `${base}cards/bicycle-front-blue.jpg`,
+  marquis: `${base}cards/bicycle-front-marquis.jpg`,
+  fyrebird:`${base}cards/bicycle-front-fyrebird.jpg`,
+  spellbound: `${base}cards/bicycle-front-spell.jpg`,
+  cypher:`${base}cards/bicycle-front-cypher.jpg`,
+  gDragon:`${base}cards/bicycle-front-gdragon.jpg`,
+  sDragon:`${base}cards/bicycle-front-sdragon.jpg`,
+  rDragon:`${base}cards/bicycle-front-rdragon.jpg`,
+  nocOrange:`${base}cards/noc-front-nocorange.jpg`,
+  mastermind:`${base}cards/keymaster-front-mastermind.jpg`,
+  mmBrown:`${base}cards/mm-front-mmyellow.jpg`,
+  mmYellow:`${base}cards/mm-front-mmyellow.jpg`,
+  mmWhite:`${base}cards/mm-front-mmwhite.jpg`,
+  stitch:`${base}cards/bicycle-front-stitch.jpg`,
+  beeRed: `${base}cards/bee-front-beered.jpg`
   // add more deck images here
 };
 
 // Fallback if deckType not found
-const backgroundUrl = deckImages[card.deckType || ''] || '${base}cards/drake-card.jpg';
+const backgroundUrl = deckImages[card.deckType || ''] || `${base}cards/drake-card.jpg`;
 ---
 
 <button
