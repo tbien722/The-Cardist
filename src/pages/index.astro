@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+const base = import.meta.env.BASE_URL;
 ---
 
 <html lang="en">
@@ -12,13 +13,14 @@ import "../styles/global.css";
     <main>
       <h1 class="site-title">The Cardist</h1>
       <section class="landing-grid">
-        <a class="landing-card" href={`${import.meta.env.BASE_URL}decks/`}>
+        <a class="landing-card" href={`${base}decks/`} style={`background-image: url('${base}cards/decks-homepage.webp')`}>
           <span class="landing-label">Decks</span>
         </a>
-        <a class="landing-card" href={`${import.meta.env.BASE_URL}cardistry/`}>
+        <a class="landing-card" href={`${base}cardistry/`} style={`background-image: url('${base}cards/cardistry-homepage.webp')`}>
           <span class="landing-label">Cardistry</span>
         </a>
       </section>
     </main>
   </body>
 </html>
+
