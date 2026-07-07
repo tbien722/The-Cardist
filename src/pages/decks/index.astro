@@ -13,6 +13,10 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   series,
   cards: cards.filter(c => c.series === series)
 }));
+
+const timelineCards = [...rawData.cards].sort((a, b) =>
+  new Date(a.acquired).getTime() - new Date(b.acquired).getTime()
+);
 ---
 <html lang="en">
   <head>
@@ -71,7 +75,21 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   </div>
 </div>
 
-      <h2>Showcase</h2>
+<!-- Timeline -->
+<h2>Collection Timeline</h2>
+<div class="timeline-controls">
+  <button id="zoom-in">+</button>
+  <button id="zoom-out">−</button>
+  <span id="zoom-label" class="zoom-label"></span>
+</div>
+<div class="timeline-wrapper">
+  <div class="timeline-scroll" id="timeline-scroll">
+    <div class="timeline-track" id="timeline-track">
+      <div class="timeline-line"></div>
+    </div>
+  </div>
+</div>
+
     </main>
   </body>
 
@@ -187,17 +205,14 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
       return 0;
     });
 
-    // Update card count
     cardCountEl.textContent = `${filtered.length} deck${filtered.length !== 1 ? 's' : ''}`;
 
-    // Group filtered cards by series
     const grouped = new Map<string, typeof filtered>();
     filtered.forEach(card => {
       if (!grouped.has(card.series)) grouped.set(card.series, []);
       grouped.get(card.series)!.push(card);
     });
 
-    // Rebuild series container
     seriesContainer.innerHTML = '';
     grouped.forEach((groupCards, series) => {
       const groupDiv = document.createElement('div');
@@ -217,7 +232,6 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
       seriesContainer.appendChild(groupDiv);
     });
 
-    // Re-attach modal listeners after DOM rebuild
     (window as any).attachCardListeners?.();
   }
 
@@ -250,6 +264,101 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   searchInput.addEventListener("input", applyFilters);
 
   applyFilters();
+</script>
+
+<script>
+  const timelineData = [
+    {name:"Classic Blue", acquired:"2022-01-01"},
+    {name:"Marquis", acquired:"2022-05-08"},
+    {name:"Fyrebird", acquired:"2022-09-02"},
+    {name:"Spellbound", acquired:"2022-12-28"},
+    {name:"Cypher", acquired:"2023-04-24"},
+    {name:"Dragon Gold", acquired:"2023-08-19"},
+    {name:"Dragon Silver", acquired:"2023-12-14"},
+    {name:"Dragon Red", acquired:"2024-04-09"},
+    {name:"NOC Orange", acquired:"2024-08-04"},
+    {name:"Mastermind", acquired:"2024-11-29"},
+    {name:"M&M Brown", acquired:"2025-03-26"},
+    {name:"M&M Yellow", acquired:"2025-07-21"},
+    {name:"M&M White", acquired:"2025-11-15"},
+    {name:"Stitch", acquired:"2026-03-12"},
+    {name:"Bees Red", acquired:"2026-07-03"}
+  ];
+
+  const track = document.getElementById("timeline-track") as HTMLElement;
+  const zoomInBtn = document.getElementById("zoom-in") as HTMLButtonElement;
+  const zoomOutBtn = document.getElementById("zoom-out") as HTMLButtonElement;
+  const zoomLabel = document.getElementById("zoom-label") as HTMLSpanElement;
+
+  const MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const ZOOM_LEVELS = [180, 365, 730, 1460];
+  let zoomIndex = 1;
+
+  const dates = timelineData.map(c => new Date(c.acquired).getTime());
+  const minDate = Math.min(...dates);
+  const maxDate = Math.max(...dates);
+
+  function renderTimeline() {
+    const daysVisible = ZOOM_LEVELS[zoomIndex];
+    const pxPerDay = track.parentElement!.clientWidth / daysVisible;
+    const totalDays = (maxDate - minDate) / MS_PER_DAY;
+    const trackWidth = Math.max(totalDays * pxPerDay, track.parentElement!.clientWidth);
+
+    zoomLabel.textContent = `${daysVisible} days visible`;
+
+    track.style.width = trackWidth + 'px';
+    track.innerHTML = '<div class="timeline-line"></div>';
+
+    timelineData.forEach((card, i) => {
+      const cardDate = new Date(card.acquired).getTime();
+      const dayOffset = (cardDate - minDate) / MS_PER_DAY;
+      const x = dayOffset * pxPerDay;
+      const above = i % 2 === 0;
+
+      const point = document.createElement('div');
+      point.className = 'timeline-point';
+      point.style.left = x + 'px';
+
+      const dot = document.createElement('div');
+      dot.className = 'timeline-dot';
+
+      const label = document.createElement('div');
+      label.className = `timeline-label ${above ? 'above' : 'below'}`;
+      label.innerHTML = `<span class="timeline-name">${card.name}</span><span class="timeline-date">${card.acquired}</span>`;
+
+      point.appendChild(dot);
+      point.appendChild(label);
+      track.appendChild(point);
+    });
+
+    addYearMarkers(minDate, maxDate, pxPerDay);
+  }
+
+  function addYearMarkers(min: number, max: number, pxPerDay: number) {
+    const startYear = new Date(min).getFullYear();
+    const endYear = new Date(max).getFullYear();
+    for (let y = startYear; y <= endYear; y++) {
+      const yearMs = new Date(`${y}-01-01`).getTime();
+      if (yearMs < min) continue;
+      const dayOffset = (yearMs - min) / MS_PER_DAY;
+      const x = dayOffset * pxPerDay;
+      const marker = document.createElement('div');
+      marker.className = 'timeline-year';
+      marker.style.left = x + 'px';
+      marker.textContent = String(y);
+      track.appendChild(marker);
+    }
+  }
+
+  zoomInBtn.addEventListener("click", () => {
+    if (zoomIndex > 0) { zoomIndex--; renderTimeline(); }
+  });
+
+  zoomOutBtn.addEventListener("click", () => {
+    if (zoomIndex < ZOOM_LEVELS.length - 1) { zoomIndex++; renderTimeline(); }
+  });
+
+  renderTimeline();
 </script>
 
 </html>
