@@ -138,9 +138,17 @@ main {
   color: #e0e0e0;
   padding: 2rem;
   border-radius: 8px;
-  min-width: 300px;
-  max-width: 500px;
+  width: 300px;
   border: 1px solid #3a3a3a;
+}
+
+.modal-content img {
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .modal-close {
@@ -173,34 +181,6 @@ main {
   font-size: 0.85rem;
   color: #888;
   margin: 0 0 1rem;
-}
-
-.timeline-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.timeline-controls button {
-  background: #2a2a2a;
-  color: #e0e0e0;
-  border: 1px solid #3a3a3a;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.25rem;
-  cursor: pointer;
-  border-radius: 4px;
-  line-height: 1;
-}
-
-.timeline-controls button:hover {
-  border-color: #666;
-}
-
-.zoom-label {
-  font-size: 0.8rem;
-  color: #888;
 }
 
 .timeline-controls {
