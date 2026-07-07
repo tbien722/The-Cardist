@@ -37,6 +37,7 @@ const backgroundUrl = deckImages[card.deckType || ''] || `${base}cards/drake-car
   style={`background: url('${backgroundUrl}') no-repeat center center; background-size: cover; border-radius: 4px;`}
   data-card={JSON.stringify(card)}
   data-brand={card.brand}
+  data-image={backgroundUrl}
   aria-label={`View details for ${card.name}`}
 >
 </button>

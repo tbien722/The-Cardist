@@ -4,121 +4,120 @@
       "name": "Classic Blue",
       "brand": "Bicycle",
       "series": "Classics",
-      "acquired": "Pre Site",
+      "acquired": "2022-01-01",
       "deckType": "bicycleblue"
     },
     {
       "name": "Marquis",
       "brand": "Bicycle",
       "series": "Classics",
-      "acquired": "Pre Site",
+      "acquired": "2022-05-08",
       "deckType": "marquis"
     },
     {
       "name": "Fyrebird",
       "brand": "Bicycle",
       "series": "Classics",
-      "acquired": "Pre Site",
+      "acquired": "2022-09-02",
       "deckType": "fyrebird"
     },
     {
       "name": "Spellbound",
       "brand": "Bicycle",
       "series": "Classics",
-      "acquired": "Pre Site",
+      "acquired": "2022-12-28",
       "deckType": "spellbound"
     },
     {
       "name": "Cypher",
       "brand": "Bicycle",
       "series": "Classics",
-      "acquired": "Pre Site",
+      "acquired": "2023-04-24",
       "deckType": "cypher"
     },
     {
       "name": "Dragon Gold",
       "brand": "Bicycle",
       "series": "Dragon",
-      "acquired": "Pre Site",
+      "acquired": "2023-08-19",
       "deckType": "gDragon"
     },
     {
       "name": "Dragon Silver",
       "brand": "Bicycle",
       "series": "Dragon",
-      "acquired": "Pre Site",
+      "acquired": "2023-12-14",
       "deckType": "sDragon"
     },
     {
       "name": "Dragon Red",
       "brand": "Bicycle",
       "series": "Dragon",
-      "acquired": "Pre Site",
+      "acquired": "2024-04-09",
       "deckType": "rDragon"
     },
     {
       "name": "NOC Orange",
       "brand": "NOC",
       "series": "NOC",
-      "acquired": "Pre Site",
+      "acquired": "2024-08-04",
       "deckType": "nocOrange"
     },
     {
       "name": "Mastermind",
       "brand": "Mastermind",
       "series": "Keymaster",
-      "acquired": "Pre Site",
+      "acquired": "2024-11-29",
       "deckType": "mastermind"
     },
     {
       "name": "M&M Brown",
       "brand": "M&M",
       "series": "M&M",
-      "acquired": "Pre Site",
+      "acquired": "2025-03-26",
       "deckType": "mmBrown"
     },
     {
       "name": "M&M Yellow",
       "brand": "M&M",
       "series": "M&M",
-      "acquired": "Pre Site",
+      "acquired": "2025-07-21",
       "deckType": "mmYellow"
     },
     {
       "name": "M&M White",
       "brand": "M&M",
       "series": "M&M",
-      "acquired": "Pre Site",
+      "acquired": "2025-11-15",
       "deckType": "mmWhite"
     },
     {
       "name": "Stitch",
       "brand": "Bicycle",
       "series": "Disney",
-      "acquired": "Pre Site",
+      "acquired": "2026-03-12",
       "deckType": "stitch"
     },
     {
       "name": "Bees Red",
       "brand": "Bees",
       "series": "Classics",
-      "acquired": "Pre Site",
+      "acquired": "2026-07-03",
       "deckType": "beeRed"
     },
     {
       "name": "Aviator Red",
       "brand": "Aviator",
       "series": "Aviators",
-      "acquired": "Pre Site",
+      "acquired": "2024-01-01",
       "deckType": "aviatorRed"
     },
     {
       "name": "Aviator Blue",
       "brand": "Aviator",
       "series": "Aviators",
-      "acquired": "Pre Site",
+      "acquired": "2025-01-01",
       "deckType": "aviatorBlue"
     }
   ]
-  
 }

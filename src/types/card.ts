@@ -3,5 +3,5 @@ export type Card = {
   brand: string;
   series: string;
   acquired: string;
-  deckType: string
+  deckType: string;
 };

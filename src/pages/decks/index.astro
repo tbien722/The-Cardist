@@ -47,11 +47,11 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
 <!-- Defines each card for the popout feature -->
 <div id="card-modal" class="modal hidden">
   <div class="modal-content">
-    <button id="close-modal" class="modal-close" aria-label="Close">×</button>
-
-    <h2 id="modal-title"></h2>
-    <ul id="modal-details"></ul>
-  </div>
+  <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+  <img id="modal-image" src="" alt="" style="width: 100%; border-radius: 4px; margin-bottom: 1rem;" />
+  <h2 id="modal-title"></h2>
+  <ul id="modal-details"></ul>
+</div>
 </div>
 
 
@@ -80,18 +80,21 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
   const closeBtn = closeBtnRaw;
 
   function closeModal() {
-    modal.classList.add("hidden");
-  }
+  modal.classList.add("hidden");
+}
 
-  function openModal(card: CardData) {
+  function openModal(card: CardData, imageUrl: string) {
   titleEl.textContent = card.name;
-
+  const imgEl = document.getElementById("modal-image") as HTMLImageElement;
+  if (imgEl) {
+    imgEl.src = imageUrl;
+    imgEl.alt = card.name;
+  }
   detailsEl.innerHTML = `
     <li><strong>Brand:</strong> ${card.brand}</li>
     <li><strong>Series:</strong> ${card.series}</li>
     <li><strong>Acquired:</strong> ${card.acquired}</li>
   `;
-
   modal.classList.remove("hidden");
 }
 
@@ -109,7 +112,8 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
         return;
       }
 
-      openModal(card);
+      const imageUrl = cardEl.dataset.image || '';
+      openModal(card, imageUrl);
     });
   });
 
