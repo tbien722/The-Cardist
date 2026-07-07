@@ -13,10 +13,6 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   series,
   cards: cards.filter(c => c.series === series)
 }));
-
-const timelineCards = [...rawData.cards].sort((a, b) =>
-  new Date(a.acquired).getTime() - new Date(b.acquired).getTime()
-);
 ---
 <html lang="en">
   <head>
@@ -35,11 +31,14 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
   <button id="zoom-out">−</button>
   <span id="zoom-label" class="zoom-label"></span>
 </div>
-<div class="timeline-wrapper" id="timeline-wrapper" data-base={import.meta.env.BASE_URL}>
-  <div class="timeline-scroll" id="timeline-scroll">
-    <div class="timeline-track" id="timeline-track">
-      <div class="timeline-line"></div>
-    </div>
+<div
+  class="timeline-wrapper"
+  id="timeline-wrapper"
+  data-base={import.meta.env.BASE_URL}
+  data-cards={JSON.stringify(rawData.cards)}
+>
+  <div class="timeline-track" id="timeline-track">
+    <div class="timeline-line"></div>
   </div>
 </div>
 
@@ -149,7 +148,6 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
   }
 
   attachCardListeners();
-
   closeBtn.addEventListener("click", closeModal);
 
   document.addEventListener("keydown", (e) => {
@@ -247,9 +245,9 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
         const detailsEl = document.getElementById("modal-details");
         const imgEl = document.getElementById("modal-image") as HTMLImageElement;
         if (!modal || !titleEl || !detailsEl) return;
-        if (titleEl) titleEl.textContent = card.name;
+        titleEl.textContent = card.name;
         if (imgEl) { imgEl.src = imageUrl; imgEl.alt = card.name; }
-        if (detailsEl) detailsEl.innerHTML = `
+        detailsEl.innerHTML = `
           <li><strong>Brand:</strong> ${card.brand}</li>
           <li><strong>Series:</strong> ${card.series}</li>
           <li><strong>Acquired:</strong> ${card.acquired}</li>
@@ -267,24 +265,6 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
 </script>
 
 <script>
-  const timelineData = [
-    {name:"Classic Blue",    acquired:"2022-01-01", deckType:"bicycleblue"},
-    {name:"Marquis",         acquired:"2022-05-08", deckType:"marquis"},
-    {name:"Fyrebird",        acquired:"2022-09-02", deckType:"fyrebird"},
-    {name:"Spellbound",      acquired:"2022-12-28", deckType:"spellbound"},
-    {name:"Cypher",          acquired:"2023-04-24", deckType:"cypher"},
-    {name:"Dragon Gold",     acquired:"2023-08-19", deckType:"gDragon"},
-    {name:"Dragon Silver",   acquired:"2023-12-14", deckType:"sDragon"},
-    {name:"Dragon Red",      acquired:"2024-04-09", deckType:"rDragon"},
-    {name:"NOC Orange",      acquired:"2024-08-04", deckType:"nocOrange"},
-    {name:"Mastermind",      acquired:"2024-11-29", deckType:"mastermind"},
-    {name:"M&M Brown",       acquired:"2025-03-26", deckType:"mmBrown"},
-    {name:"M&M Yellow",      acquired:"2025-07-21", deckType:"mmYellow"},
-    {name:"M&M White",       acquired:"2025-11-15", deckType:"mmWhite"},
-    {name:"Stitch",          acquired:"2026-03-12", deckType:"stitch"},
-    {name:"Bees Red",        acquired:"2026-07-03", deckType:"beeRed"}
-  ];
-
   const deckImages: Record<string, string> = {
     bicycleblue: 'cards/bicycle-front-blue.jpg',
     marquis:     'cards/bicycle-front-marquis.jpg',
@@ -303,33 +283,42 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
     beeRed:      'cards/bee-front-beered.jpg'
   };
 
+  const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
   const wrapper = document.getElementById("timeline-wrapper") as HTMLElement;
   const base = wrapper.dataset.base || '/';
+  const timelineData = JSON.parse(wrapper.dataset.cards || '[]') as {
+    name: string; acquired: string; deckType: string;
+  }[];
+
+  timelineData.sort((a, b) => new Date(a.acquired).getTime() - new Date(b.acquired).getTime());
+
   const track = document.getElementById("timeline-track") as HTMLElement;
   const zoomInBtn = document.getElementById("zoom-in") as HTMLButtonElement;
   const zoomOutBtn = document.getElementById("zoom-out") as HTMLButtonElement;
   const zoomLabel = document.getElementById("zoom-label") as HTMLSpanElement;
-
-  const MS_PER_DAY = 1000 * 60 * 60 * 24;
-  const ZOOM_LEVELS = [180, 365, 730, 1460];
-  let zoomIndex = 1;
-
-  const dates = timelineData.map(c => new Date(c.acquired).getTime());
-  const minDate = Math.min(...dates);
-  const maxDate = Math.max(...dates);
 
   const modal = document.getElementById("card-modal") as HTMLElement;
   const modalTitleEl = document.getElementById("modal-title") as HTMLElement;
   const modalDetailsEl = document.getElementById("modal-details") as HTMLElement;
   const modalImgEl = document.getElementById("modal-image") as HTMLImageElement;
 
+  const MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const ZOOM_LEVELS = [180, 365, 730, 1460];
+  const LEADER_PX = 20;
+  const CARD_W = 40;
+  const CARD_H = 56;
+  let zoomIndex = 1;
+
+  const dates = timelineData.map(c => new Date(c.acquired).getTime());
+  const minDate = Math.min(...dates);
+  const maxDate = Math.max(...dates);
+
   function openTimelineModal(card: typeof timelineData[0], imageUrl: string) {
     modalTitleEl.textContent = card.name;
     modalImgEl.src = imageUrl;
     modalImgEl.alt = card.name;
-    modalDetailsEl.innerHTML = `
-      <li><strong>Acquired:</strong> ${card.acquired}</li>
-    `;
+    modalDetailsEl.innerHTML = `<li><strong>Acquired:</strong> ${card.acquired}</li>`;
     modal.classList.remove("hidden");
   }
 
@@ -344,63 +333,64 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
     track.style.width = trackWidth + 'px';
     track.innerHTML = '<div class="timeline-line"></div>';
 
-    // Year markers
     const startYear = new Date(minDate).getFullYear();
     const endYear = new Date(maxDate).getFullYear() + 1;
-    for (let y = startYear; y <= endYear; y++) {
-      const yearMs = new Date(`${y}-01-01`).getTime();
-      const dayOffset = (yearMs - minDate) / MS_PER_DAY;
-      const x = dayOffset * pxPerDay;
-      if (x < 0 || x > trackWidth) continue;
-      const marker = document.createElement('div');
-      marker.className = 'timeline-year-marker';
-      marker.style.left = x + 'px';
-      marker.textContent = String(y);
-      track.appendChild(marker);
-    }
 
-    // Month markers
-    for (let y = startYear; y <= endYear; y++) {
-      for (let m = 0; m < 12; m++) {
-        const monthMs = new Date(y, m, 1).getTime();
-        if (m === 0) continue; // already covered by year marker
-        const dayOffset = (monthMs - minDate) / MS_PER_DAY;
-        const x = dayOffset * pxPerDay;
-        if (x < 0 || x > trackWidth) continue;
-        const marker = document.createElement('div');
-        marker.className = 'timeline-month-marker';
-        marker.style.left = x + 'px';
-        track.appendChild(marker);
-      }
-    }
-
-    // Week markers — only at zoom levels <= 365 days
+    // Week markers — only at 365 days or fewer
     if (daysVisible <= 365) {
       const firstSunday = new Date(minDate);
       firstSunday.setDate(firstSunday.getDate() - firstSunday.getDay());
       let weekMs = firstSunday.getTime();
       while (weekMs <= maxDate + MS_PER_DAY * 7) {
-        const dayOffset = (weekMs - minDate) / MS_PER_DAY;
-        const x = dayOffset * pxPerDay;
+        const x = (weekMs - minDate) / MS_PER_DAY * pxPerDay;
         if (x >= 0 && x <= trackWidth) {
-          const marker = document.createElement('div');
-          marker.className = 'timeline-week-marker';
-          marker.style.left = x + 'px';
-          track.appendChild(marker);
+          const m = document.createElement('div');
+          m.className = 'timeline-week-marker';
+          m.style.left = x + 'px';
+          track.appendChild(m);
         }
         weekMs += MS_PER_DAY * 7;
       }
     }
 
-    // Card points
-    const CARD_WIDTH = 50;
-    const CARD_HEIGHT = 70;
-    const LEADER_LENGTH = 60;
+    // Month markers and labels
+    for (let y = startYear; y <= endYear; y++) {
+      for (let mo = 0; mo < 12; mo++) {
+        const monthMs = new Date(y, mo, 1).getTime();
+        const x = (monthMs - minDate) / MS_PER_DAY * pxPerDay;
+        if (x < 0 || x > trackWidth) continue;
+        if (mo === 0) continue; // year marker handles January
 
+        const tick = document.createElement('div');
+        tick.className = 'timeline-month-marker';
+        tick.style.left = x + 'px';
+        track.appendChild(tick);
+
+        if (daysVisible <= 730) {
+          const label = document.createElement('div');
+          label.className = 'timeline-month-label';
+          label.style.left = x + 'px';
+          label.textContent = MONTH_ABBR[mo];
+          track.appendChild(label);
+        }
+      }
+    }
+
+    // Year markers
+    for (let y = startYear; y <= endYear; y++) {
+      const yearMs = new Date(`${y}-01-01`).getTime();
+      const x = (yearMs - minDate) / MS_PER_DAY * pxPerDay;
+      if (x < 0 || x > trackWidth) continue;
+      const m = document.createElement('div');
+      m.className = 'timeline-year-marker';
+      m.style.left = x + 'px';
+      m.textContent = String(y);
+      track.appendChild(m);
+    }
+
+    // Card points
     timelineData.forEach((card, i) => {
-      const cardDate = new Date(card.acquired).getTime();
-      const dayOffset = (cardDate - minDate) / MS_PER_DAY;
-      const x = dayOffset * pxPerDay;
+      const x = (new Date(card.acquired).getTime() - minDate) / MS_PER_DAY * pxPerDay;
       const above = i % 2 === 0;
       const imageUrl = base + (deckImages[card.deckType] || 'cards/drake-card.jpg');
 
@@ -414,21 +404,18 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
 
       const leader = document.createElement('div');
       leader.className = `timeline-leader ${above ? 'above' : 'below'}`;
-      leader.style.height = LEADER_LENGTH + 'px';
 
       const img = document.createElement('img');
       img.src = imageUrl;
       img.alt = card.name;
       img.className = `timeline-card-img ${above ? 'above' : 'below'}`;
-      img.style.width = CARD_WIDTH + 'px';
-      img.style.height = CARD_HEIGHT + 'px';
+      img.style.width = CARD_W + 'px';
+      img.style.height = CARD_H + 'px';
 
       point.appendChild(dot);
       point.appendChild(leader);
       point.appendChild(img);
-
       point.addEventListener('click', () => openTimelineModal(card, imageUrl));
-
       track.appendChild(point);
     });
   }
@@ -436,7 +423,6 @@ const timelineCards = [...rawData.cards].sort((a, b) =>
   zoomInBtn.addEventListener("click", () => {
     if (zoomIndex > 0) { zoomIndex--; renderTimeline(); }
   });
-
   zoomOutBtn.addEventListener("click", () => {
     if (zoomIndex < ZOOM_LEVELS.length - 1) { zoomIndex++; renderTimeline(); }
   });
