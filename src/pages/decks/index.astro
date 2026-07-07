@@ -5,9 +5,14 @@ import rawData from "../../data/cards.json";
 import DataCard from "../../components/DataCard.astro";
 import "../../styles/global.css";
 
-const cards = (rawData.cards as Card[]).sort((a, b) => 
+const cards = (rawData.cards as Card[]).sort((a, b) =>
   a.name.localeCompare(b.name)
 );
+
+const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series => ({
+  series,
+  cards: cards.filter(c => c.series === series)
+}));
 ---
 <html lang="en">
   <head>
@@ -18,7 +23,7 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
     <TopNav />
     <main>
       <h1>Cards</h1>
-      
+
 <!-- Brand Filter -->
 <label for="brand-filter">Filter by Brand:</label>
 <select id="brand-filter">
@@ -28,39 +33,48 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
   ))}
 </select>
 
-<!-- Series Filter -->
-<!-- <label for="series-filter">Filter by Series:</label>
-<select id="series-filter">
-  <option value="all">All</option>
-  {Array.from(new Set(cards.map(card => card.series))).map(series => (
-    <option value={series}>{series}</option>
+<!-- Sort -->
+<label for="sort-select">Sort by:</label>
+<select id="sort-select">
+  <option value="alpha">Alphabetical</option>
+  <option value="newest">Newest</option>
+  <option value="oldest">Oldest</option>
+</select>
+
+<!-- Search -->
+<input id="search-input" type="text" placeholder="Search by name..." />
+
+<!-- Card count -->
+<p id="card-count" class="card-count"></p>
+
+<!-- Card view grouped by series -->
+<div id="series-container">
+  {seriesGroups.map(group => (
+    <div class="series-group" data-series={group.series}>
+      <h3 class="series-title">{group.series}</h3>
+      <section class="card-grid">
+        {group.cards.map((card) => (
+          <DataCard card={card} />
+        ))}
+      </section>
+    </div>
   ))}
-</select> -->
+</div>
 
-<!-- Card view -->
-<section class="card-grid">
- {cards.map((card) => (
-  <DataCard card={card} />
-))}
-</section>
-
-<!-- Defines each card for the popout feature -->
+<!-- Modal -->
 <div id="card-modal" class="modal hidden">
   <div class="modal-content">
-  <button id="close-modal" class="modal-close" aria-label="Close">×</button>
-  <img id="modal-image" src="" alt="" style="width: 100%; border-radius: 4px; margin-bottom: 1rem;" />
-  <h2 id="modal-title"></h2>
-  <ul id="modal-details"></ul>
+    <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+    <img id="modal-image" src="" alt="" style="width: 100%; border-radius: 4px; margin-bottom: 1rem;" />
+    <h2 id="modal-title"></h2>
+    <ul id="modal-details"></ul>
+  </div>
 </div>
-</div>
 
+      <h2>Showcase</h2>
+    </main>
+  </body>
 
-
-  <h2>Showcase</h2>
- </main>
-</body>
-
-<!-- Adds the popout feature and closing methods -->
 <script>
   const modalRaw = document.getElementById("card-modal") as HTMLDivElement | null;
   const modalContentRaw = modalRaw?.querySelector(".modal-content") as HTMLDivElement | null;
@@ -72,7 +86,6 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
     throw new Error("Modal elements missing from DOM");
   }
 
-  // Non-null aliases 
   const modal = modalRaw;
   const modalContent = modalContentRaw;
   const titleEl = titleElRaw;
@@ -80,80 +93,163 @@ const cards = (rawData.cards as Card[]).sort((a, b) =>
   const closeBtn = closeBtnRaw;
 
   function closeModal() {
-  modal.classList.add("hidden");
-}
+    modal.classList.add("hidden");
+  }
 
   function openModal(card: CardData, imageUrl: string) {
-  titleEl.textContent = card.name;
-  const imgEl = document.getElementById("modal-image") as HTMLImageElement;
-  if (imgEl) {
-    imgEl.src = imageUrl;
-    imgEl.alt = card.name;
+    titleEl.textContent = card.name;
+    const imgEl = document.getElementById("modal-image") as HTMLImageElement;
+    if (imgEl) {
+      imgEl.src = imageUrl;
+      imgEl.alt = card.name;
+    }
+    detailsEl.innerHTML = `
+      <li><strong>Brand:</strong> ${card.brand}</li>
+      <li><strong>Series:</strong> ${card.series}</li>
+      <li><strong>Acquired:</strong> ${card.acquired}</li>
+    `;
+    modal.classList.remove("hidden");
   }
-  detailsEl.innerHTML = `
-    <li><strong>Brand:</strong> ${card.brand}</li>
-    <li><strong>Series:</strong> ${card.series}</li>
-    <li><strong>Acquired:</strong> ${card.acquired}</li>
-  `;
-  modal.classList.remove("hidden");
-}
 
- document
-  .querySelectorAll<HTMLButtonElement>(".data-card")
-  .forEach((cardEl) => {
-    cardEl.addEventListener("click", () => {
-      const raw = cardEl.dataset.card;
-      if (!raw) return;
+  function attachCardListeners() {
+    document
+      .querySelectorAll<HTMLButtonElement>(".data-card")
+      .forEach((cardEl) => {
+        cardEl.addEventListener("click", () => {
+          const raw = cardEl.dataset.card;
+          if (!raw) return;
+          let card: CardData;
+          try {
+            card = JSON.parse(raw);
+          } catch {
+            return;
+          }
+          const imageUrl = cardEl.dataset.image || '';
+          openModal(card, imageUrl);
+        });
+      });
+  }
 
-      let card: CardData;
-      try {
-        card = JSON.parse(raw);
-      } catch {
-        return;
-      }
+  attachCardListeners();
 
-      const imageUrl = cardEl.dataset.image || '';
-      openModal(card, imageUrl);
-    });
-  });
-
-  // Close via button
   closeBtn.addEventListener("click", closeModal);
 
-  // Close via ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.classList.contains("hidden")) {
       closeModal();
     }
   });
 
-  // Click outside modal-content
   modal.addEventListener("click", (e) => {
     if (!modalContent.contains(e.target as Node)) {
       closeModal();
     }
   });
+
   type CardData = {
-  name: string;
-  brand: string;
-  series: string;
-  acquired: string;
-};
+    name: string;
+    brand: string;
+    series: string;
+    acquired: string;
+  };
 </script>
+
 <script>
-  const filterSelect = document.getElementById("brand-filter");
-  const cardElements = document.querySelectorAll<HTMLButtonElement>(".data-card");
+  const filterSelect = document.getElementById("brand-filter") as HTMLSelectElement;
+  const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
+  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+  const seriesContainer = document.getElementById("series-container") as HTMLElement;
+  const cardCountEl = document.getElementById("card-count") as HTMLParagraphElement;
 
-  filterSelect?.addEventListener("change", (e) => {
-    const value = (e.target as HTMLSelectElement).value;
+  const allCards = Array.from(document.querySelectorAll<HTMLButtonElement>(".data-card")).map(el => ({
+    el,
+    data: JSON.parse(el.dataset.card || '{}'),
+    image: el.dataset.image || '',
+    brand: el.dataset.brand || '',
+    series: (JSON.parse(el.dataset.card || '{}')).series as string
+  }));
 
-    cardElements.forEach(card => {
-      if (value === "all" || card.dataset.brand === value) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+  function applyFilters() {
+    const brand = filterSelect.value;
+    const sort = sortSelect.value;
+    const search = searchInput.value.toLowerCase();
+
+    let filtered = allCards.filter(card => {
+      const matchesBrand = brand === "all" || card.brand === brand;
+      const matchesSearch = card.data.name.toLowerCase().includes(search);
+      return matchesBrand && matchesSearch;
     });
-  });
+
+    filtered.sort((a, b) => {
+      if (sort === "alpha") return a.data.name.localeCompare(b.data.name);
+      if (sort === "newest") return new Date(b.data.acquired).getTime() - new Date(a.data.acquired).getTime();
+      if (sort === "oldest") return new Date(a.data.acquired).getTime() - new Date(b.data.acquired).getTime();
+      return 0;
+    });
+
+    // Update card count
+    cardCountEl.textContent = `${filtered.length} deck${filtered.length !== 1 ? 's' : ''}`;
+
+    // Group filtered cards by series
+    const grouped = new Map<string, typeof filtered>();
+    filtered.forEach(card => {
+      if (!grouped.has(card.series)) grouped.set(card.series, []);
+      grouped.get(card.series)!.push(card);
+    });
+
+    // Rebuild series container
+    seriesContainer.innerHTML = '';
+    grouped.forEach((groupCards, series) => {
+      const groupDiv = document.createElement('div');
+      groupDiv.className = 'series-group';
+      groupDiv.dataset.series = series;
+
+      const title = document.createElement('h3');
+      title.className = 'series-title';
+      title.textContent = series;
+      groupDiv.appendChild(title);
+
+      const grid = document.createElement('section');
+      grid.className = 'card-grid';
+      groupCards.forEach(card => grid.appendChild(card.el));
+      groupDiv.appendChild(grid);
+
+      seriesContainer.appendChild(groupDiv);
+    });
+
+    // Re-attach modal listeners after DOM rebuild
+    (window as any).attachCardListeners?.();
+  }
+
+  (window as any).attachCardListeners = () => {
+    document.querySelectorAll<HTMLButtonElement>(".data-card").forEach((cardEl) => {
+      cardEl.addEventListener("click", () => {
+        const raw = cardEl.dataset.card;
+        if (!raw) return;
+        const card = JSON.parse(raw);
+        const imageUrl = cardEl.dataset.image || '';
+        const modal = document.getElementById("card-modal");
+        const titleEl = document.getElementById("modal-title");
+        const detailsEl = document.getElementById("modal-details");
+        const imgEl = document.getElementById("modal-image") as HTMLImageElement;
+        if (!modal || !titleEl || !detailsEl) return;
+        if (titleEl) titleEl.textContent = card.name;
+        if (imgEl) { imgEl.src = imageUrl; imgEl.alt = card.name; }
+        if (detailsEl) detailsEl.innerHTML = `
+          <li><strong>Brand:</strong> ${card.brand}</li>
+          <li><strong>Series:</strong> ${card.series}</li>
+          <li><strong>Acquired:</strong> ${card.acquired}</li>
+        `;
+        modal.classList.remove("hidden");
+      });
+    });
+  };
+
+  filterSelect.addEventListener("change", applyFilters);
+  sortSelect.addEventListener("change", applyFilters);
+  searchInput.addEventListener("input", applyFilters);
+
+  applyFilters();
 </script>
+
 </html>
