@@ -3,121 +3,191 @@
     {
       "name": "Classic Blue",
       "brand": "Bicycle",
-      "series": "Classics",
+      "series": "Rider Backs",
       "acquired": "2022-01-01",
       "deckType": "bicycleblue"
     },
     {
+      "name": "Blue Rider Back",
+      "brand": "Bicycle",
+      "series": "Rider Backs",
+      "acquired": "2022-02-14",
+      "deckType": "blueriderback"
+    },
+    {
+      "name": "Aviator Blue",
+      "brand": "Aviator",
+      "series": "Rider Backs",
+      "acquired": "2022-03-20",
+      "deckType": "aviatorblue"
+    },
+    {
+      "name": "Aviator Red",
+      "brand": "Aviator",
+      "series": "Rider Backs",
+      "acquired": "2022-04-10",
+      "deckType": "aviatorred"
+    },
+    {
+      "name": "Bee Red",
+      "brand": "Bee",
+      "series": "Rider Backs",
+      "acquired": "2022-05-08",
+      "deckType": "beeRed"
+    },
+    {
       "name": "Marquis",
       "brand": "Bicycle",
-      "series": "Classics",
-      "acquired": "2022-05-08",
+      "series": "Signature",
+      "acquired": "2022-06-15",
       "deckType": "marquis"
     },
     {
       "name": "Fyrebird",
       "brand": "Bicycle",
-      "series": "Classics",
-      "acquired": "2022-09-02",
+      "series": "Signature",
+      "acquired": "2022-07-22",
       "deckType": "fyrebird"
     },
     {
       "name": "Spellbound",
       "brand": "Bicycle",
-      "series": "Classics",
-      "acquired": "2022-12-28",
+      "series": "Signature",
+      "acquired": "2022-09-02",
       "deckType": "spellbound"
     },
     {
       "name": "Cypher",
       "brand": "Bicycle",
-      "series": "Classics",
-      "acquired": "2023-04-24",
+      "series": "Signature",
+      "acquired": "2022-10-18",
       "deckType": "cypher"
+    },
+    {
+      "name": "Muralis",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2022-11-30",
+      "deckType": "muralis"
+    },
+    {
+      "name": "Stargazer",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2022-12-28",
+      "deckType": "stargazer"
+    },
+    {
+      "name": "Sea King",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2023-02-05",
+      "deckType": "seaking"
     },
     {
       "name": "Dragon Gold",
       "brand": "Bicycle",
-      "series": "Dragon",
-      "acquired": "2023-08-19",
+      "series": "Dragons",
+      "acquired": "2023-04-12",
       "deckType": "gDragon"
     },
     {
       "name": "Dragon Silver",
       "brand": "Bicycle",
-      "series": "Dragon",
-      "acquired": "2023-12-14",
+      "series": "Dragons",
+      "acquired": "2023-06-01",
       "deckType": "sDragon"
     },
     {
       "name": "Dragon Red",
       "brand": "Bicycle",
-      "series": "Dragon",
-      "acquired": "2024-04-09",
+      "series": "Dragons",
+      "acquired": "2023-08-19",
       "deckType": "rDragon"
+    },
+    {
+      "name": "AC/DC",
+      "brand": "Bicycle",
+      "series": "Collabs",
+      "acquired": "2023-09-14",
+      "deckType": "acdc"
+    },
+    {
+      "name": "Guns N' Roses",
+      "brand": "Bicycle",
+      "series": "Collabs",
+      "acquired": "2023-10-30",
+      "deckType": "gunsnroses"
+    },
+    {
+      "name": "Stitch",
+      "brand": "Bicycle",
+      "series": "Collabs",
+      "acquired": "2023-12-14",
+      "deckType": "stitch"
+    },
+    {
+      "name": "Batman",
+      "brand": "Theory11",
+      "series": "Collabs",
+      "acquired": "2024-01-22",
+      "deckType": "batman"
+    },
+    {
+      "name": "Dune",
+      "brand": "Theory11",
+      "series": "Collabs",
+      "acquired": "2024-03-08",
+      "deckType": "dune"
+    },
+    {
+      "name": "Artisan",
+      "brand": "Theory11",
+      "series": "Signature",
+      "acquired": "2024-04-09",
+      "deckType": "artisan"
     },
     {
       "name": "NOC Orange",
       "brand": "NOC",
       "series": "NOC",
-      "acquired": "2024-08-04",
+      "acquired": "2024-06-17",
       "deckType": "nocOrange"
     },
     {
       "name": "Mastermind",
       "brand": "Mastermind",
-      "series": "Keymaster",
-      "acquired": "2024-11-29",
+      "series": "Mastermind",
+      "acquired": "2024-08-04",
       "deckType": "mastermind"
+    },
+    {
+      "name": "Orchid",
+      "brand": "Tally-Ho",
+      "series": "Tally-Ho",
+      "acquired": "2024-09-20",
+      "deckType": "orchid"
     },
     {
       "name": "M&M Brown",
       "brand": "M&M",
       "series": "M&M",
-      "acquired": "2025-03-26",
+      "acquired": "2024-11-29",
       "deckType": "mmBrown"
     },
     {
       "name": "M&M Yellow",
       "brand": "M&M",
       "series": "M&M",
-      "acquired": "2025-07-21",
+      "acquired": "2025-01-15",
       "deckType": "mmYellow"
     },
     {
       "name": "M&M White",
       "brand": "M&M",
       "series": "M&M",
-      "acquired": "2025-11-15",
+      "acquired": "2025-03-26",
       "deckType": "mmWhite"
-    },
-    {
-      "name": "Stitch",
-      "brand": "Bicycle",
-      "series": "Disney",
-      "acquired": "2026-03-12",
-      "deckType": "stitch"
-    },
-    {
-      "name": "Bees Red",
-      "brand": "Bees",
-      "series": "Classics",
-      "acquired": "2026-07-03",
-      "deckType": "beeRed"
-    },
-    {
-      "name": "Aviator Red",
-      "brand": "Aviator",
-      "series": "Aviators",
-      "acquired": "2024-01-01",
-      "deckType": "aviatorRed"
-    },
-    {
-      "name": "Aviator Blue",
-      "brand": "Aviator",
-      "series": "Aviators",
-      "acquired": "2025-01-01",
-      "deckType": "aviatorBlue"
     }
   ]
 }
