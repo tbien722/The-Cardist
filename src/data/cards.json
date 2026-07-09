@@ -5,189 +5,270 @@
       "brand": "Bicycle",
       "series": "Rider Backs",
       "acquired": "2022-01-01",
-      "deckType": "bicycleblue"
+      "deckType": "bicycleblue",
+      "rating": 3,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Blue Rider Back",
       "brand": "Bicycle",
       "series": "Rider Backs",
       "acquired": "2022-02-14",
-      "deckType": "blueriderback"
+      "deckType": "blueriderback",
+      "rating": 3.25,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Aviator Blue",
       "brand": "Aviator",
       "series": "Rider Backs",
       "acquired": "2022-03-20",
-      "deckType": "aviatorblue"
+      "deckType": "aviatorblue",
+      "rating": 3,
+      "acquired_from": "Airport",
+      "limited": false
     },
     {
       "name": "Aviator Red",
       "brand": "Aviator",
       "series": "Rider Backs",
       "acquired": "2022-04-10",
-      "deckType": "aviatorred"
+      "deckType": "aviatorred",
+      "rating": 3,
+      "acquired_from": "Airport",
+      "limited": false
     },
     {
       "name": "Bee Red",
       "brand": "Bee",
       "series": "Rider Backs",
       "acquired": "2022-05-08",
-      "deckType": "beeRed"
+      "deckType": "beeRed",
+      "rating": 3.5,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Marquis",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2022-06-15",
-      "deckType": "marquis"
+      "deckType": "marquis",
+      "rating": 4,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Fyrebird",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2022-07-22",
-      "deckType": "fyrebird"
+      "deckType": "fyrebird",
+      "rating": 4,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Spellbound",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2022-09-02",
-      "deckType": "spellbound"
+      "deckType": "spellbound",
+      "rating": 4.25,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Cypher",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2022-10-18",
-      "deckType": "cypher"
+      "deckType": "cypher",
+      "rating": 5,
+      "acquired_from": "CVS, Nashville",
+      "limited": false
     },
     {
       "name": "Muralis",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2022-11-30",
-      "deckType": "muralis"
+      "deckType": "muralis",
+      "rating": 4,
+      "acquired_from": "CVS, Irvine",
+      "limited": false
     },
     {
       "name": "Stargazer",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2022-12-28",
-      "deckType": "stargazer"
+      "deckType": "stargazer",
+      "rating": 3.5,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Sea King",
       "brand": "Bicycle",
       "series": "Signature",
       "acquired": "2023-02-05",
-      "deckType": "seaking"
+      "deckType": "seaking",
+      "rating": 4.75,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Dragon Gold",
       "brand": "Bicycle",
       "series": "Dragons",
       "acquired": "2023-04-12",
-      "deckType": "gDragon"
+      "deckType": "gDragon",
+      "rating": 4.5,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Dragon Silver",
       "brand": "Bicycle",
       "series": "Dragons",
       "acquired": "2023-06-01",
-      "deckType": "sDragon"
+      "deckType": "sDragon",
+      "rating": 4,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "Dragon Red",
       "brand": "Bicycle",
       "series": "Dragons",
       "acquired": "2023-08-19",
-      "deckType": "rDragon"
+      "deckType": "rDragon",
+      "rating": 3.75,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "AC/DC",
       "brand": "Bicycle",
       "series": "Collabs",
       "acquired": "2023-09-14",
-      "deckType": "acdc"
+      "deckType": "acdc",
+      "rating": 4,
+      "acquired_from": "Albertsons, San Diego",
+      "limited": false
     },
     {
       "name": "Guns N' Roses",
       "brand": "Bicycle",
       "series": "Collabs",
       "acquired": "2023-10-30",
-      "deckType": "gunsnroses"
+      "deckType": "gunsnroses",
+      "rating": 4,
+      "acquired_from": "Albertsons, Irvine",
+      "limited": false
     },
     {
       "name": "Stitch",
       "brand": "Bicycle",
       "series": "Collabs",
       "acquired": "2023-12-14",
-      "deckType": "stitch"
+      "deckType": "stitch",
+      "rating": 4.25,
+      "acquired_from": "Albertsons, Irvine",
+      "limited": false
     },
     {
       "name": "Batman",
       "brand": "Theory11",
       "series": "Collabs",
       "acquired": "2024-01-22",
-      "deckType": "batman"
+      "deckType": "batman",
+      "rating": 4.75,
+      "acquired_from": "Target, San Diego",
+      "limited": false
     },
     {
       "name": "Dune",
       "brand": "Theory11",
       "series": "Collabs",
       "acquired": "2024-03-08",
-      "deckType": "dune"
+      "deckType": "dune",
+      "rating": 4.25,
+      "acquired_from": "Target, San Diego",
+      "limited": false
     },
     {
       "name": "Artisan",
       "brand": "Theory11",
       "series": "Signature",
       "acquired": "2024-04-09",
-      "deckType": "artisan"
+      "deckType": "artisan",
+      "rating": 3.5,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "NOC Orange",
       "brand": "NOC",
       "series": "NOC",
       "acquired": "2024-06-17",
-      "deckType": "nocOrange"
+      "deckType": "nocOrange",
+      "rating": 3.5,
+      "acquired_from": "Art of Play",
+      "limited": false
     },
     {
       "name": "Mastermind",
       "brand": "Mastermind",
       "series": "Mastermind",
       "acquired": "2024-08-04",
-      "deckType": "mastermind"
+      "deckType": "mastermind",
+      "rating": 4,
+      "acquired_from": "Mall of America, Minnesota",
+      "limited": true
     },
     {
       "name": "Orchid",
       "brand": "Tally-Ho",
       "series": "Tally-Ho",
       "acquired": "2024-09-20",
-      "deckType": "orchid"
+      "deckType": "orchid",
+      "rating": 4,
+      "acquired_from": "Amazon",
+      "limited": false
     },
     {
       "name": "M&M Brown",
       "brand": "M&M",
       "series": "M&M",
       "acquired": "2024-11-29",
-      "deckType": "mmBrown"
+      "deckType": "mmBrown",
+      "rating": 3,
+      "acquired_from": "Disney Springs, Orlando",
+      "limited": false
     },
     {
       "name": "M&M Yellow",
       "brand": "M&M",
       "series": "M&M",
       "acquired": "2025-01-15",
-      "deckType": "mmYellow"
+      "deckType": "mmYellow",
+      "rating": 3,
+      "acquired_from": "Disney Springs, Orlando",
+      "limited": false
     },
     {
       "name": "M&M White",
       "brand": "M&M",
       "series": "M&M",
       "acquired": "2025-03-26",
-      "deckType": "mmWhite"
+      "deckType": "mmWhite",
+      "rating": 3,
+      "acquired_from": "Disney Springs, Orlando",
+      "limited": false
     }
   ]
 }

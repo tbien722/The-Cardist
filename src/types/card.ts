@@ -4,4 +4,7 @@ export type Card = {
   series: string;
   acquired: string;
   deckType: string;
+  rating: number;
+  acquired_from: string;
+  limited: boolean;
 };

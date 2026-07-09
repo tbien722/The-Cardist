@@ -60,7 +60,6 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   </select>
 
   <input id="search-input" type="text" placeholder="Search by name..." />
-
   <span id="card-count" class="card-count"></span>
 </div>
 
@@ -87,6 +86,8 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
     <button id="close-modal" class="modal-close" aria-label="Close">×</button>
     <img id="modal-image" src="" alt="" />
     <h2 id="modal-title"></h2>
+    <div id="modal-badges" class="modal-badges"></div>
+    <div id="modal-stars" class="modal-stars"></div>
     <ul id="modal-details"></ul>
   </div>
 </div>
@@ -100,6 +101,8 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   const titleElRaw = document.getElementById("modal-title") as HTMLHeadingElement | null;
   const detailsElRaw = document.getElementById("modal-details") as HTMLUListElement | null;
   const closeBtnRaw = document.getElementById("close-modal") as HTMLButtonElement | null;
+  const badgesElRaw = document.getElementById("modal-badges") as HTMLDivElement | null;
+  const starsElRaw = document.getElementById("modal-stars") as HTMLDivElement | null;
 
   if (!modalRaw || !modalContentRaw || !titleElRaw || !detailsElRaw || !closeBtnRaw) {
     throw new Error("Modal elements missing from DOM");
@@ -110,9 +113,41 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   const titleEl = titleElRaw;
   const detailsEl = detailsElRaw;
   const closeBtn = closeBtnRaw;
+  const badgesEl = badgesElRaw;
+  const starsEl = starsElRaw;
 
   function closeModal() {
     modal.classList.add("hidden");
+  }
+
+  function renderStars(rating: number): string {
+    const totalStars = 5;
+    let svg = '<svg class="stars-svg" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg">';
+    
+    // Define clip paths for each star position
+    for (let i = 0; i < totalStars; i++) {
+      const fill = Math.min(Math.max(rating - i, 0), 1);
+      const x = i * 24;
+      const clipId = `clip-${i}-${Math.random().toString(36).slice(2)}`;
+      const fillWidth = fill * 20;
+
+      svg += `
+        <defs>
+          <clipPath id="${clipId}">
+            <rect x="${x}" y="0" width="${fillWidth}" height="24"/>
+          </clipPath>
+        </defs>
+        <path class="star-bg" transform="translate(${x + 2}, 2)"
+          d="M10 0l2.9 6.3L20 7.3l-5 5 1.2 7.3L10 16l-6.2 3.6L5 12.3 0 7.3l7.1-1z"/>
+        <path class="star-fill" transform="translate(${x + 2}, 2)"
+          clip-path="url(#${clipId})"
+          d="M10 0l2.9 6.3L20 7.3l-5 5 1.2 7.3L10 16l-6.2 3.6L5 12.3 0 7.3l7.1-1z"/>
+      `;
+    }
+
+    svg += '</svg>';
+    if (rating === 0) return '<span class="stars-unrated">Unrated</span>';
+    return svg + `<span class="stars-label">${rating.toFixed(2).replace(/\.?0+$/, '')}</span>`;
   }
 
   function openModal(card: CardData, imageUrl: string) {
@@ -122,10 +157,22 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
       imgEl.src = imageUrl;
       imgEl.alt = card.name;
     }
+
+    if (badgesEl) {
+      badgesEl.innerHTML = card.limited
+        ? '<span class="modal-badge-limited">Limited Edition</span>'
+        : '';
+    }
+
+    if (starsEl) {
+      starsEl.innerHTML = renderStars(card.rating || 0);
+    }
+
     detailsEl.innerHTML = `
       <li><strong>Brand:</strong> ${card.brand}</li>
       <li><strong>Series:</strong> ${card.series}</li>
       <li><strong>Acquired:</strong> ${card.acquired}</li>
+      ${card.acquired_from ? `<li><strong>Source:</strong> ${card.acquired_from}</li>` : ''}
     `;
     modal.classList.remove("hidden");
   }
@@ -169,6 +216,9 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
     brand: string;
     series: string;
     acquired: string;
+    acquired_from: string;
+    rating: number;
+    limited: boolean;
   };
 </script>
 
@@ -256,13 +306,50 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
         const titleEl = document.getElementById("modal-title");
         const detailsEl = document.getElementById("modal-details");
         const imgEl = document.getElementById("modal-image") as HTMLImageElement;
+        const badgesEl = document.getElementById("modal-badges");
+        const starsEl = document.getElementById("modal-stars");
         if (!modal || !titleEl || !detailsEl) return;
         titleEl.textContent = card.name;
         if (imgEl) { imgEl.src = imageUrl; imgEl.alt = card.name; }
+        if (badgesEl) {
+          badgesEl.innerHTML = card.limited
+            ? '<span class="modal-badge-limited">Limited Edition</span>'
+            : '';
+        }
+        if (starsEl) {
+          const rating = card.rating || 0;
+          if (rating === 0) {
+            starsEl.innerHTML = '<span class="stars-unrated">Unrated</span>';
+          } else {
+            const totalStars = 5;
+            let svg = '<svg class="stars-svg" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg">';
+            for (let i = 0; i < totalStars; i++) {
+              const fill = Math.min(Math.max(rating - i, 0), 1);
+              const x = i * 24;
+              const clipId = `clip-${i}-${Math.random().toString(36).slice(2)}`;
+              const fillWidth = fill * 20;
+              svg += `
+                <defs>
+                  <clipPath id="${clipId}">
+                    <rect x="${x}" y="0" width="${fillWidth}" height="24"/>
+                  </clipPath>
+                </defs>
+                <path class="star-bg" transform="translate(${x + 2}, 2)"
+                  d="M10 0l2.9 6.3L20 7.3l-5 5 1.2 7.3L10 16l-6.2 3.6L5 12.3 0 7.3l7.1-1z"/>
+                <path class="star-fill" transform="translate(${x + 2}, 2)"
+                  clip-path="url(#${clipId})"
+                  d="M10 0l2.9 6.3L20 7.3l-5 5 1.2 7.3L10 16l-6.2 3.6L5 12.3 0 7.3l7.1-1z"/>
+              `;
+            }
+            svg += '</svg>';
+            starsEl.innerHTML = svg + `<span class="stars-label">${rating}</span>`;
+          }
+        }
         detailsEl.innerHTML = `
           <li><strong>Brand:</strong> ${card.brand}</li>
           <li><strong>Series:</strong> ${card.series}</li>
           <li><strong>Acquired:</strong> ${card.acquired}</li>
+          ${card.acquired_from ? `<li><strong>Source:</strong> ${card.acquired_from}</li>` : ''}
         `;
         modal.classList.remove("hidden");
       });
