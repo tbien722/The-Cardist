@@ -42,34 +42,36 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   </div>
 </div>
 
-<!-- Brand Filter -->
-<label for="brand-filter">Filter by Brand:</label>
-<select id="brand-filter">
-  <option value="all">All</option>
-  {Array.from(new Set(cards.map(card => card.brand))).map(brand => (
-    <option value={brand}>{brand}</option>
-  ))}
-</select>
+<!-- Filter toolbar -->
+<div class="filter-toolbar">
+  <label for="brand-filter">Brand</label>
+  <select id="brand-filter">
+    <option value="all">All</option>
+    {Array.from(new Set(cards.map(card => card.brand))).map(brand => (
+      <option value={brand}>{brand}</option>
+    ))}
+  </select>
 
-<!-- Sort -->
-<label for="sort-select">Sort by:</label>
-<select id="sort-select">
-  <option value="alpha">Alphabetical</option>
-  <option value="newest">Newest</option>
-  <option value="oldest">Oldest</option>
-</select>
+  <label for="sort-select">Sort</label>
+  <select id="sort-select">
+    <option value="alpha">Alphabetical</option>
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
+  </select>
 
-<!-- Search -->
-<input id="search-input" type="text" placeholder="Search by name..." />
+  <input id="search-input" type="text" placeholder="Search by name..." />
 
-<!-- Card count -->
-<p id="card-count" class="card-count"></p>
+  <span id="card-count" class="card-count"></span>
+</div>
 
 <!-- Card view grouped by series -->
 <div id="series-container">
   {seriesGroups.map(group => (
     <div class="series-group" data-series={group.series}>
-      <h3 class="series-title">{group.series}</h3>
+      <div class="series-header">
+        <h3 class="series-title">{group.series}</h3>
+        <span class="series-count-badge">{group.cards.length}</span>
+      </div>
       <section class="card-grid">
         {group.cards.map((card) => (
           <DataCard card={card} />
@@ -83,7 +85,7 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
 <div id="card-modal" class="modal hidden">
   <div class="modal-content">
     <button id="close-modal" class="modal-close" aria-label="Close">×</button>
-    <img id="modal-image" src="" alt="" style="width: 100%; border-radius: 4px; margin-bottom: 1rem;" />
+    <img id="modal-image" src="" alt="" />
     <h2 id="modal-title"></h2>
     <ul id="modal-details"></ul>
   </div>
@@ -175,7 +177,7 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
   const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
   const searchInput = document.getElementById("search-input") as HTMLInputElement;
   const seriesContainer = document.getElementById("series-container") as HTMLElement;
-  const cardCountEl = document.getElementById("card-count") as HTMLParagraphElement;
+  const cardCountEl = document.getElementById("card-count") as HTMLSpanElement;
 
   const allCards = Array.from(document.querySelectorAll<HTMLButtonElement>(".data-card")).map(el => ({
     el,
@@ -217,10 +219,20 @@ const seriesGroups = Array.from(new Set(cards.map(c => c.series))).map(series =>
       groupDiv.className = 'series-group';
       groupDiv.dataset.series = series;
 
+      const header = document.createElement('div');
+      header.className = 'series-header';
+
       const title = document.createElement('h3');
       title.className = 'series-title';
       title.textContent = series;
-      groupDiv.appendChild(title);
+
+      const badge = document.createElement('span');
+      badge.className = 'series-count-badge';
+      badge.textContent = String(groupCards.length);
+
+      header.appendChild(title);
+      header.appendChild(badge);
+      groupDiv.appendChild(header);
 
       const grid = document.createElement('section');
       grid.className = 'card-grid';
