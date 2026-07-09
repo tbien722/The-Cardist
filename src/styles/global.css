@@ -116,6 +116,10 @@ main {
 .landing-label {
   position: relative;
   z-index: 1;
+  font-size: 2rem;
+  color: #e0e0e0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .modal {
