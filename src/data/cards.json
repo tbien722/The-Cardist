@@ -6,7 +6,7 @@
       "series": "Rider Backs",
       "acquired": "2022-01-01",
       "deckType": "bicycleblue",
-      "rating": 3.25,
+      "rating": 3,
       "acquired_from": "Amazon",
       "limited": false
     },
@@ -121,6 +121,16 @@
       "limited": false
     },
     {
+      "name": "Waves",
+      "brand": "Misc",
+      "series": "Signature",
+      "acquired": "2023-03-11",
+      "deckType": "waves",
+      "rating": 3.5,
+      "acquired_from": "Art of Play",
+      "limited": false
+    },
+    {
       "name": "Dragon Gold",
       "brand": "Bicycle",
       "series": "Dragons",
@@ -201,6 +211,36 @@
       "limited": false
     },
     {
+      "name": "Games Hub Blue",
+      "brand": "Games Hub",
+      "series": "Novelty",
+      "acquired": "2024-03-22",
+      "deckType": "gameshubblue",
+      "rating": 2.5,
+      "acquired_from": "5 Below, Irvine",
+      "limited": false
+    },
+    {
+      "name": "Games Hub Cats",
+      "brand": "Games Hub",
+      "series": "Novelty",
+      "acquired": "2024-04-05",
+      "deckType": "gameshubcats",
+      "rating": 3.5,
+      "acquired_from": "5 Below, Irvine",
+      "limited": false
+    },
+    {
+      "name": "Games Hub Red",
+      "brand": "Games Hub",
+      "series": "Novelty",
+      "acquired": "2024-04-19",
+      "deckType": "gameshubred",
+      "rating": 2.5,
+      "acquired_from": "5 Below, Irvine",
+      "limited": false
+    },
+    {
       "name": "Artisan",
       "brand": "Theory11",
       "series": "Signature",
@@ -208,6 +248,36 @@
       "deckType": "artisan",
       "rating": 3.5,
       "acquired_from": "Amazon",
+      "limited": false
+    },
+    {
+      "name": "Beowulf",
+      "brand": "Kings Wild",
+      "series": "Signature",
+      "acquired": "2024-05-10",
+      "deckType": "beowulf",
+      "rating": 5,
+      "acquired_from": "Kings Wild",
+      "limited": false
+    },
+    {
+      "name": "Banksy",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-05-28",
+      "deckType": "banksy",
+      "rating": 3.25,
+      "acquired_from": "Amazon",
+      "limited": false
+    },
+    {
+      "name": "dBrand",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-06-10",
+      "deckType": "dbrand",
+      "rating": 4,
+      "acquired_from": "dBrand",
       "limited": false
     },
     {
@@ -221,6 +291,26 @@
       "limited": false
     },
     {
+      "name": "Elf",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-07-04",
+      "deckType": "elf",
+      "rating": 3,
+      "acquired_from": "Amazon",
+      "limited": false
+    },
+    {
+      "name": "Guinness",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-07-20",
+      "deckType": "guinness",
+      "rating": 3,
+      "acquired_from": "Amazon",
+      "limited": false
+    },
+    {
       "name": "Mastermind",
       "brand": "Mastermind",
       "series": "Mastermind",
@@ -231,6 +321,16 @@
       "limited": true
     },
     {
+      "name": "Anthropology",
+      "brand": "Stockholm17",
+      "series": "Signature",
+      "acquired": "2024-08-18",
+      "deckType": "anthropology",
+      "rating": 4,
+      "acquired_from": "Stockholm17",
+      "limited": false
+    },
+    {
       "name": "Orchid",
       "brand": "Tally-Ho",
       "series": "Tally-Ho",
@@ -239,6 +339,16 @@
       "rating": 4,
       "acquired_from": "Amazon",
       "limited": false
+    },
+    {
+      "name": "Yellow",
+      "brand": "Misc Goods Co.",
+      "series": "Signature",
+      "acquired": "2024-10-08",
+      "deckType": "miscgoodsyellow",
+      "rating": 4.5,
+      "acquired_from": "San Diego Airport",
+      "limited": true
     },
     {
       "name": "M&M Brown",
