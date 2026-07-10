@@ -175,7 +175,7 @@ select {
 }
 
 .series-title {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0.12em;
