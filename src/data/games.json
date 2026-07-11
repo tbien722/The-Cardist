@@ -1,0 +1,132 @@
+{
+  "games": [
+    {
+      "name": "Speed",
+      "category": "Party",
+      "players": "2",
+      "rating": 4,
+      "color": "#7a1f1f",
+      "rules": ""
+    },
+    {
+      "name": "Spoons",
+      "category": "Party",
+      "players": "2–∞",
+      "rating": 3.5,
+      "color": "#8b4000",
+      "rules": ""
+    },
+    {
+      "name": "Fodinha",
+      "category": "Party",
+      "players": "3–10",
+      "rating": 4.25,
+      "color": "#7a5c00",
+      "rules": ""
+    },
+    {
+      "name": "Slapjack",
+      "category": "Party",
+      "players": "2–5",
+      "rating": 3.5,
+      "color": "#6b2d3e",
+      "rules": ""
+    },
+    {
+      "name": "Cribbage",
+      "category": "Slower",
+      "players": "2–4",
+      "rating": 5,
+      "color": "#1a3a5c",
+      "rules": ""
+    },
+    {
+      "name": "Cat and Rat",
+      "category": "Slower",
+      "players": "2–6",
+      "rating": 5,
+      "color": "#1a4a3a",
+      "rules": ""
+    },
+    {
+      "name": "Joker",
+      "category": "Slower",
+      "players": "2–5",
+      "rating": 3.5,
+      "color": "#2d3a6b",
+      "rules": ""
+    },
+    {
+      "name": "Badam Sat",
+      "category": "Slower",
+      "players": "2–6",
+      "rating": 4.5,
+      "color": "#1a4a4a",
+      "rules": ""
+    },
+    {
+      "name": "Pasoy Dos",
+      "category": "Slower",
+      "players": "2–4",
+      "rating": 3.75,
+      "color": "#3a2a5c",
+      "rules": ""
+    },
+    {
+      "name": "Hearts",
+      "category": "Slower",
+      "players": "3–5",
+      "rating": 4.75,
+      "color": "#2a1a4a",
+      "rules": ""
+    },
+    {
+      "name": "Rummy",
+      "category": "Slower",
+      "players": "2–4",
+      "rating": 3.5,
+      "color": "#1e3d2a",
+      "rules": ""
+    },
+    {
+      "name": "Loba",
+      "category": "Slower",
+      "players": "2–4",
+      "rating": 3,
+      "color": "#2a3d4a",
+      "rules": ""
+    },
+    {
+      "name": "Solitaire",
+      "category": "Single Player",
+      "players": "1",
+      "rating": 4,
+      "color": "#4a3a1a",
+      "rules": ""
+    },
+    {
+      "name": "Single Hand Solitaire",
+      "category": "Single Player",
+      "players": "1",
+      "rating": 3.5,
+      "color": "#3a3a3a",
+      "rules": ""
+    },
+    {
+      "name": "Jailbreak",
+      "category": "Single Player",
+      "players": "1",
+      "rating": 4.5,
+      "color": "#4a4a2a",
+      "rules": ""
+    },
+    {
+      "name": "Osmosis",
+      "category": "Single Player",
+      "players": "1",
+      "rating": 3.5,
+      "color": "#3a2a2a",
+      "rules": ""
+    }
+  ]
+}

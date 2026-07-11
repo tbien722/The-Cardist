@@ -577,3 +577,74 @@ select {
   pointer-events: none;
   z-index: 2;
 }
+
+/* ── Game grid ── */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.game-card {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #4a4a4a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+  border-color: var(--gold-dim);
+}
+
+.game-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.game-card-players {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Rules modal ── */
+.modal-rules {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.rules-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin: 0 0 0.5rem;
+}
+
+.rules-text {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ── Game modal — no image so wider ── */
+#game-modal .modal-content {
+  width: 360px;
+}

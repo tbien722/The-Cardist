@@ -1,0 +1,276 @@
+---
+import TopNav from "../../components/TopNav.astro";
+import type { Game } from "../../types/game";
+import rawData from "../../data/games.json";
+import "../../styles/global.css";
+
+const games = (rawData.games as Game[]).sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
+
+const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(category => ({
+  category,
+  games: games.filter(g => g.category === category)
+}));
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Card Games</title>
+  </head>
+  <body>
+    <TopNav />
+    <main>
+      <h1>Card Games</h1>
+
+      <!-- Filter toolbar -->
+      <div class="filter-toolbar">
+        <label for="category-filter">Category</label>
+        <select id="category-filter">
+          <option value="all">All</option>
+          {Array.from(new Set(games.map(g => g.category))).map(cat => (
+            <option value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <label for="sort-select">Sort</label>
+        <select id="sort-select">
+          <option value="alpha">Alphabetical</option>
+          <option value="rating">Top Rated</option>
+          <option value="players">Player Count</option>
+        </select>
+
+        <input id="search-input" type="text" placeholder="Search by name..." />
+        <span id="game-count" class="card-count"></span>
+      </div>
+
+      <!-- Games grouped by category -->
+      <div id="category-container">
+        {categoryGroups.map(group => (
+          <div class="series-group" data-category={group.category}>
+            <div class="series-header">
+              <h3 class="series-title">{group.category}</h3>
+              <span class="series-count-badge">{group.games.length}</span>
+            </div>
+            <section class="game-grid">
+              {group.games.map((game) => (
+                <button
+                  class="game-card"
+                  style={`background-color: ${game.color};`}
+                  data-game={JSON.stringify(game)}
+                  data-category={game.category}
+                  aria-label={`View details for ${game.name}`}
+                >
+                  <span class="game-card-name">{game.name}</span>
+                  <span class="game-card-players">👥 {game.players}</span>
+                </button>
+              ))}
+            </section>
+          </div>
+        ))}
+      </div>
+
+      <!-- Modal -->
+      <div id="game-modal" class="modal hidden">
+        <div class="modal-content">
+          <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+          <h2 id="modal-title"></h2>
+          <div id="modal-stars" class="modal-stars"></div>
+          <ul id="modal-details"></ul>
+          <div id="modal-rules" class="modal-rules"></div>
+        </div>
+      </div>
+
+    </main>
+  </body>
+
+<script>
+  const modalRaw = document.getElementById("game-modal") as HTMLDivElement | null;
+  const modalContentRaw = modalRaw?.querySelector(".modal-content") as HTMLDivElement | null;
+  const titleElRaw = document.getElementById("modal-title") as HTMLHeadingElement | null;
+  const detailsElRaw = document.getElementById("modal-details") as HTMLUListElement | null;
+  const rulesElRaw = document.getElementById("modal-rules") as HTMLDivElement | null;
+  const closeBtnRaw = document.getElementById("close-modal") as HTMLButtonElement | null;
+  const starsElRaw = document.getElementById("modal-stars") as HTMLDivElement | null;
+
+  if (!modalRaw || !modalContentRaw || !titleElRaw || !detailsElRaw || !closeBtnRaw) {
+    throw new Error("Modal elements missing from DOM");
+  }
+
+  const modal = modalRaw;
+  const modalContent = modalContentRaw;
+  const titleEl = titleElRaw;
+  const detailsEl = detailsElRaw;
+  const rulesEl = rulesElRaw;
+  const closeBtn = closeBtnRaw;
+  const starsEl = starsElRaw;
+
+  function closeModal() {
+    modal.classList.add("hidden");
+  }
+
+  function renderStars(rating: number): string {
+    if (rating === 0) return '<span class="stars-unrated">Unrated</span>';
+    const totalStars = 5;
+    let svg = '<svg class="stars-svg" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg">';
+    for (let i = 0; i < totalStars; i++) {
+      const fill = Math.min(Math.max(rating - i, 0), 1);
+      const x = i * 24;
+      const clipId = `clip-${i}-${Math.random().toString(36).slice(2)}`;
+      svg += `
+        <defs>
+          <clipPath id="${clipId}">
+            <rect x="0" y="0" width="${fill * 20}" height="20"/>
+          </clipPath>
+        </defs>
+        <g transform="translate(${x + 2}, 2)">
+          <path class="star-bg"
+            d="M10 0l2.9 6.3L20 7.3l-5 5 1.2 7.3L10 16l-6.2 3.6L5 12.3 0 7.3l7.1-1z"/>
+          <path class="star-fill"
+            clip-path="url(#${clipId})"
+            d="M10 0l2.9 6.3L20 7.3l-5 5 1.2 7.3L10 16l-6.2 3.6L5 12.3 0 7.3l7.1-1z"/>
+        </g>
+      `;
+    }
+    svg += '</svg>';
+    return svg + `<span class="stars-label">${rating}</span>`;
+  }
+
+  function openModal(game: GameData) {
+    titleEl.textContent = game.name;
+
+    if (starsEl) starsEl.innerHTML = renderStars(game.rating || 0);
+
+    detailsEl.innerHTML = `
+      <li><strong>Category:</strong> ${game.category}</li>
+      <li><strong>Players:</strong> ${game.players}</li>
+    `;
+
+    if (rulesEl) {
+      rulesEl.innerHTML = game.rules
+        ? `<h3 class="rules-title">How to Play</h3><p class="rules-text">${game.rules}</p>`
+        : `<p class="stars-unrated">No rules added yet.</p>`;
+    }
+
+    modal.classList.remove("hidden");
+  }
+
+  function attachGameListeners() {
+    document.querySelectorAll<HTMLButtonElement>(".game-card").forEach((el) => {
+      el.addEventListener("click", () => {
+        const raw = el.dataset.game;
+        if (!raw) return;
+        try {
+          openModal(JSON.parse(raw));
+        } catch { return; }
+      });
+    });
+  }
+
+  attachGameListeners();
+  closeBtn.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (!modalContent.contains(e.target as Node)) closeModal();
+  });
+
+  type GameData = {
+    name: string;
+    category: string;
+    players: string;
+    rating: number;
+    rules: string;
+  };
+</script>
+
+<script>
+  const categorySelect = document.getElementById("category-filter") as HTMLSelectElement;
+  const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
+  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+  const categoryContainer = document.getElementById("category-container") as HTMLElement;
+  const gameCountEl = document.getElementById("game-count") as HTMLSpanElement;
+
+  const allGames = Array.from(document.querySelectorAll<HTMLButtonElement>(".game-card")).map(el => ({
+    el,
+    data: JSON.parse(el.dataset.game || '{}'),
+    category: el.dataset.category || ''
+  }));
+
+  function applyFilters() {
+    const category = categorySelect.value;
+    const sort = sortSelect.value;
+    const search = searchInput.value.toLowerCase();
+
+    let filtered = allGames.filter(game => {
+      const matchesCategory = category === "all" || game.category === category;
+      const matchesSearch = game.data.name.toLowerCase().includes(search);
+      return matchesCategory && matchesSearch;
+    });
+
+    filtered.sort((a, b) => {
+      if (sort === "alpha") return a.data.name.localeCompare(b.data.name);
+      if (sort === "rating") {
+        const aR = a.data.rating || 0;
+        const bR = b.data.rating || 0;
+        if (aR === 0 && bR === 0) return 0;
+        if (aR === 0) return 1;
+        if (bR === 0) return -1;
+        return bR - aR;
+      }
+      if (sort === "players") {
+        return parseInt(a.data.players) - parseInt(b.data.players);
+      }
+      return 0;
+    });
+
+    gameCountEl.textContent = `${filtered.length} game${filtered.length !== 1 ? 's' : ''}`;
+
+    const grouped = new Map<string, typeof filtered>();
+    filtered.forEach(game => {
+      if (!grouped.has(game.category)) grouped.set(game.category, []);
+      grouped.get(game.category)!.push(game);
+    });
+
+    categoryContainer.innerHTML = '';
+    grouped.forEach((groupGames, category) => {
+      const groupDiv = document.createElement('div');
+      groupDiv.className = 'series-group';
+      groupDiv.dataset.category = category;
+
+      const header = document.createElement('div');
+      header.className = 'series-header';
+
+      const title = document.createElement('h3');
+      title.className = 'series-title';
+      title.textContent = category;
+
+      const badge = document.createElement('span');
+      badge.className = 'series-count-badge';
+      badge.textContent = String(groupGames.length);
+
+      header.appendChild(title);
+      header.appendChild(badge);
+      groupDiv.appendChild(header);
+
+      const grid = document.createElement('section');
+      grid.className = 'game-grid';
+      groupGames.forEach(game => grid.appendChild(game.el));
+      groupDiv.appendChild(grid);
+
+      categoryContainer.appendChild(groupDiv);
+    });
+
+  }
+
+  categorySelect.addEventListener("change", applyFilters);
+  sortSelect.addEventListener("change", applyFilters);
+  searchInput.addEventListener("input", applyFilters);
+
+  applyFilters();
+</script>
+
+</html>
