@@ -671,3 +671,87 @@ select {
 .modal-difficulty {
   font-weight: 600;
 }
+
+/* ── Felt background (games page only for now) ── */
+.felt-bg {
+  background-image:
+    radial-gradient(ellipse at top left, rgba(26, 74, 58, 0.08), transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(26, 74, 58, 0.06), transparent 60%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.008) 0px,
+      rgba(255, 255, 255, 0.008) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+/* ── Card flip ── */
+.game-card {
+  perspective: 800px;
+  background: none !important;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.game-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.game-card:hover .game-card-inner,
+.game-card:focus-visible .game-card-inner {
+  transform: rotateY(180deg);
+}
+
+.game-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  border: 1px solid #4a4a4a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.game-card-front {
+  background-color: var(--face-color, #333);
+}
+
+.game-card-back {
+  background: var(--bg-card);
+  transform: rotateY(180deg);
+  justify-content: space-evenly;
+}
+
+.game-card-back-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.game-card-back-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+/* ── Shuffle-in ── */
+@keyframes shuffleIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.game-card.shuffle-in {
+  animation: shuffleIn 0.28s ease both;
+}

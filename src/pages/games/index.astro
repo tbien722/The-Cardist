@@ -20,7 +20,7 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
   </head>
   <body>
     <TopNav />
-    <main>
+    <main class="felt-bg">
       <h1>Card Games</h1>
 
       <!-- Filter toolbar -->
@@ -64,17 +64,34 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
             <section class="game-grid">
               {group.games.map((game) => (
                 <button
-                  class="game-card"
-                  style={`background-color: ${game.color};`}
-                  data-game={JSON.stringify(game)}
-                  data-category={game.category}
-                  data-difficulty={game.difficulty}
-                  aria-label={`View details for ${game.name}`}
-                >
-                  <span class={`difficulty-badge difficulty-${game.difficulty}`}>{game.difficulty}</span>
-                  <span class="game-card-name">{game.name}</span>
-                  <span class="game-card-players">👥 {game.players}</span>
-                </button>
+  class="game-card"
+  data-game={JSON.stringify(game)}
+  data-category={game.category}
+  data-difficulty={game.difficulty}
+  aria-label={`View details for ${game.name}`}
+>
+  <div class="game-card-inner">
+    <div class="game-card-face game-card-front" style={`--face-color: ${game.color};`}>
+      <span class={`difficulty-badge difficulty-${game.difficulty}`}>{game.difficulty}</span>
+      <span class="game-card-name">{game.name}</span>
+      <span class="game-card-players">👥 {game.players}</span>
+    </div>
+    <div class="game-card-face game-card-back">
+      <div>
+        <div class="game-card-back-label">Players</div>
+        <div class="game-card-back-value">{game.players}</div>
+      </div>
+      <div>
+        <div class="game-card-back-label">Difficulty</div>
+        <div class="game-card-back-value">{game.difficulty}</div>
+      </div>
+      <div>
+        <div class="game-card-back-label">Rating</div>
+        <div class="game-card-back-value">{game.rating || "—"}</div>
+      </div>
+    </div>
+  </div>
+</button>
               ))}
             </section>
           </div>
@@ -279,9 +296,15 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
       groupDiv.appendChild(header);
 
       const grid = document.createElement('section');
-      grid.className = 'game-grid';
-      groupGames.forEach(game => grid.appendChild(game.el));
-      groupDiv.appendChild(grid);
+grid.className = 'game-grid';
+groupGames.forEach((game, i) => {
+  game.el.classList.remove('shuffle-in');
+  void game.el.offsetWidth; // force reflow to restart animation
+  game.el.style.animationDelay = `${i * 30}ms`;
+  game.el.classList.add('shuffle-in');
+  grid.appendChild(game.el);
+});
+groupDiv.appendChild(grid);
 
       categoryContainer.appendChild(groupDiv);
     });
