@@ -11,21 +11,21 @@ const base = import.meta.env.BASE_URL;
   </head>
   <body>
     <main class="landing-main">
-  <h1 class="site-title">♠ The Cardist</h1>
-  <div class="landing-grid">
-    <a href="/decks" class="landing-card" style="background-image: url(...)">
-      <span class="landing-label">Decks</span>
-    </a>
-    <a href="/games" class="landing-card" style="background-image: url(...)">
-      <span class="landing-label">Card Games</span>
-    </a>
-    <a href="/cardistry" class="landing-card" style="background-image: url(...)">
-      <span class="landing-label">Cardistry</span>
-    </a>
-    <a href="/wishlist" class="landing-card" style="background-image: url(...)">
-      <span class="landing-label">Wishlist</span>
-    </a>
-  </div>
-</main>
+      <h1 class="site-title">♠ The Cardist</h1>
+      <div class="landing-grid">
+        <a href={`${base}decks`} class="landing-card" style={`background-image: url(${base}cards/decks-homepage.webp)`}>
+          <span class="landing-label">Decks</span>
+        </a>
+        <a href={`${base}games`} class="landing-card" style="background-color: #2a2a2a;">
+          <span class="landing-label">Card Games</span>
+        </a>
+        <a href={`${base}cardistry`} class="landing-card" style={`background-image: url(${base}cards/cardistry-homepage.webp)`}>
+          <span class="landing-label">Cardistry</span>
+        </a>
+        <a href={`${base}wishlist`} class="landing-card" style="background-color: #2a2a2a;">
+          <span class="landing-label">Wishlist</span>
+        </a>
+      </div>
+    </main>
   </body>
 </html>
