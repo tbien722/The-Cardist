@@ -6,7 +6,9 @@
       "players": "2",
       "rating": 4,
       "color": "#7a1f1f",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Easy",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M22 4 L10 22 H18 L16 36 L30 16 H21 Z' stroke='white' stroke-width='2' stroke-linejoin='round' fill='rgba(255,255,255,0.15)'/></svg>"
     },
     {
       "name": "Spoons",
@@ -14,7 +16,9 @@
       "players": "2–∞",
       "rating": 3.5,
       "color": "#8b4000",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Easy",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><ellipse cx='20' cy='12' rx='7' ry='9' stroke='white' stroke-width='2'/><line x1='20' y1='21' x2='20' y2='35' stroke='white' stroke-width='2'/></svg>"
     },
     {
       "name": "Fodinha",
@@ -22,7 +26,9 @@
       "players": "3–10",
       "rating": 4.25,
       "color": "#7a5c00",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M4 30 L12 12 L20 26 L28 8 L36 22' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
     },
     {
       "name": "Slapjack",
@@ -30,7 +36,9 @@
       "players": "2–5",
       "rating": 3.5,
       "color": "#6b2d3e",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Easy",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='20' cy='20' r='5' fill='white'/><g stroke='white' stroke-width='2' stroke-linecap='round'><line x1='20' y1='2' x2='20' y2='10'/><line x1='20' y1='30' x2='20' y2='38'/><line x1='2' y1='20' x2='10' y2='20'/><line x1='30' y1='20' x2='38' y2='20'/><line x1='7' y1='7' x2='13' y2='13'/><line x1='27' y1='27' x2='33' y2='33'/><line x1='7' y1='33' x2='13' y2='27'/><line x1='27' y1='13' x2='33' y2='7'/></g></svg>"
     },
     {
       "name": "Cribbage",
@@ -38,7 +46,9 @@
       "players": "2–4",
       "rating": 5,
       "color": "#1a3a5c",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Hard",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><g fill='white'><circle cx='8' cy='8' r='2'/><circle cx='16' cy='8' r='2'/><circle cx='24' cy='8' r='2'/><circle cx='32' cy='8' r='2'/><circle cx='8' cy='20' r='2'/><circle cx='16' cy='20' r='2'/><circle cx='24' cy='20' r='2'/><circle cx='32' cy='20' r='2'/><circle cx='8' cy='32' r='2'/><circle cx='16' cy='32' r='2'/><circle cx='24' cy='32' r='2'/><circle cx='32' cy='32' r='2'/></g></svg>"
     },
     {
       "name": "Cat and Rat",
@@ -46,7 +56,9 @@
       "players": "2–6",
       "rating": 5,
       "color": "#1a4a3a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10 14 L14 4 L18 14 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/><path d='M22 14 L26 4 L30 14 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/><circle cx='20' cy='22' r='10' stroke='white' stroke-width='2'/></svg>"
     },
     {
       "name": "Joker",
@@ -54,7 +66,9 @@
       "players": "2–5",
       "rating": 3.5,
       "color": "#2d3a6b",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 30 L10 12 L16 24 L20 8 L24 24 L30 12 L34 30 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/><circle cx='10' cy='10' r='2' fill='white'/><circle cx='20' cy='6' r='2' fill='white'/><circle cx='30' cy='10' r='2' fill='white'/></svg>"
     },
     {
       "name": "Badam Sat",
@@ -62,7 +76,9 @@
       "players": "2–6",
       "rating": 4.5,
       "color": "#1a4a4a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M20 6 C28 14 32 20 24 24 C22 25.5 22 22 20 22 C18 22 18 25.5 16 24 C8 20 12 14 20 6 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/><line x1='20' y1='24' x2='20' y2='34' stroke='white' stroke-width='2'/></svg>"
     },
     {
       "name": "Pasoy Dos",
@@ -70,7 +86,9 @@
       "players": "2–4",
       "rating": 3.75,
       "color": "#3a2a5c",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='8' y='10' width='16' height='22' rx='2' stroke='white' stroke-width='2'/><rect x='16' y='6' width='16' height='22' rx='2' stroke='white' stroke-width='2' fill='rgba(0,0,0,0.2)'/></svg>"
     },
     {
       "name": "Hearts",
@@ -78,7 +96,9 @@
       "players": "3–5",
       "rating": 4.75,
       "color": "#2a1a4a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Hard",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M20 34 C6 24 4 14 12 9 C17 6 20 11 20 11 C20 11 23 6 28 9 C36 14 34 24 20 34 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/></svg>"
     },
     {
       "name": "Rummy",
@@ -86,7 +106,9 @@
       "players": "2–4",
       "rating": 3.5,
       "color": "#1e3d2a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><g stroke='white' stroke-width='2'><rect x='6' y='12' width='12' height='18' rx='2' transform='rotate(-15 12 21)'/><rect x='14' y='10' width='12' height='18' rx='2'/><rect x='22' y='12' width='12' height='18' rx='2' transform='rotate(15 28 21)'/></g></svg>"
     },
     {
       "name": "Loba",
@@ -94,7 +116,9 @@
       "players": "2–4",
       "rating": 3,
       "color": "#2a3d4a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Easy",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M28 8 A12 12 0 1 0 28 32 A9 9 0 1 1 28 8 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/><path d='M8 34 L14 20 L20 34 Z' stroke='white' stroke-width='2' stroke-linejoin='round'/></svg>"
     },
     {
       "name": "Solitaire",
@@ -102,7 +126,9 @@
       "players": "1",
       "rating": 4,
       "color": "#4a3a1a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Easy",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='12' y='6' width='16' height='28' rx='2' stroke='white' stroke-width='2'/><circle cx='16' cy='12' r='1.5' fill='white'/></svg>"
     },
     {
       "name": "Single Hand Solitaire",
@@ -110,7 +136,9 @@
       "players": "1",
       "rating": 3.5,
       "color": "#3a3a3a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Easy",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='12' y='6' width='16' height='28' rx='2' stroke='white' stroke-width='2'/><circle cx='20' cy='20' r='2.5' fill='white'/></svg>"
     },
     {
       "name": "Jailbreak",
@@ -118,7 +146,9 @@
       "players": "1",
       "rating": 4.5,
       "color": "#4a4a2a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='8' width='14' height='24' rx='2' stroke='white' stroke-width='2' fill='rgba(0,0,0,0.2)'/><g stroke='white' stroke-width='2'><line x1='16' y1='4' x2='16' y2='36'/><line x1='24' y1='4' x2='24' y2='36'/><line x1='32' y1='4' x2='32' y2='36'/></g></svg>"
     },
     {
       "name": "Osmosis",
@@ -126,7 +156,9 @@
       "players": "1",
       "rating": 3.5,
       "color": "#3a2a2a",
-      "rules": ""
+      "rules": "",
+      "difficulty": "Medium",
+      "icon": "<svg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='15' cy='20' r='10' stroke='white' stroke-width='2'/><circle cx='25' cy='20' r='10' stroke='white' stroke-width='2'/></svg>"
     }
   ]
 }

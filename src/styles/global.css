@@ -648,3 +648,38 @@ select {
 #game-modal .modal-content {
   width: 360px;
 }
+
+/* ── Game icon ── */
+.game-card-icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+}
+
+.game-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Difficulty badge ── */
+.difficulty-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 99px;
+  padding: 0.1rem 0.4rem;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.difficulty-Easy   { color: #6fbf73; }
+.difficulty-Medium { color: #e0c060; }
+.difficulty-Hard   { color: #d97a6c; }
+
+.modal-difficulty {
+  font-weight: 600;
+}

@@ -55,15 +55,18 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
             <section class="game-grid">
               {group.games.map((game) => (
                 <button
-                  class="game-card"
-                  style={`background-color: ${game.color};`}
-                  data-game={JSON.stringify(game)}
-                  data-category={game.category}
-                  aria-label={`View details for ${game.name}`}
-                >
-                  <span class="game-card-name">{game.name}</span>
-                  <span class="game-card-players">👥 {game.players}</span>
-                </button>
+  class="game-card"
+  style={`background-color: ${game.color};`}
+  data-game={JSON.stringify(game)}
+  data-category={game.category}
+  data-difficulty={game.difficulty}
+  aria-label={`View details for ${game.name}`}
+>
+  <span class={`difficulty-badge difficulty-${game.difficulty}`}>{game.difficulty}</span>
+  <span class="game-card-icon" set:html={game.icon} />
+  <span class="game-card-name">{game.name}</span>
+  <span class="game-card-players">👥 {game.players}</span>
+</button>
               ))}
             </section>
           </div>

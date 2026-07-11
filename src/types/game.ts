@@ -1,3 +1,5 @@
+export type Difficulty = "Easy" | "Medium" | "Hard";
+
 export type Game = {
   name: string;
   category: string;
@@ -5,4 +7,6 @@ export type Game = {
   rating: number;
   color: string;
   rules: string;
+  difficulty: Difficulty;
+  icon: string; // inline SVG markup, rendered via set:html
 };
