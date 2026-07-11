@@ -7,7 +7,8 @@
       "rating": 4,
       "color": "#7a1f1f",
       "rules": "",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "favorite": false
     },
     {
       "name": "Spoons",
@@ -16,7 +17,8 @@
       "rating": 3.5,
       "color": "#8b4000",
       "rules": "",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "favorite": false
     },
     {
       "name": "Fodinha",
@@ -25,7 +27,8 @@
       "rating": 4.25,
       "color": "#7a5c00",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
     },
     {
       "name": "Slapjack",
@@ -34,7 +37,8 @@
       "rating": 3.5,
       "color": "#6b2d3e",
       "rules": "",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "favorite": false
     },
     {
       "name": "Cribbage",
@@ -43,7 +47,8 @@
       "rating": 5,
       "color": "#1a3a5c",
       "rules": "",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "favorite": true
     },
     {
       "name": "Cat and Rat",
@@ -52,7 +57,8 @@
       "rating": 5,
       "color": "#1a4a3a",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": true
     },
     {
       "name": "Joker",
@@ -61,7 +67,8 @@
       "rating": 3.5,
       "color": "#2d3a6b",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
     },
     {
       "name": "Badam Sat",
@@ -70,7 +77,8 @@
       "rating": 4.5,
       "color": "#1a4a4a",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
    },
     {
       "name": "Pasoy Dos",
@@ -79,7 +87,8 @@
       "rating": 3.75,
       "color": "#3a2a5c",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
     },
     {
       "name": "Hearts",
@@ -88,7 +97,8 @@
       "rating": 4.75,
       "color": "#2a1a4a",
       "rules": "",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "favorite": true
     },
     {
       "name": "Rummy",
@@ -97,7 +107,8 @@
       "rating": 3.5,
       "color": "#1e3d2a",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
     },
     {
       "name": "Loba",
@@ -106,7 +117,8 @@
       "rating": 3,
       "color": "#2a3d4a",
       "rules": "",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "favorite": false
     },
     {
       "name": "Solitaire",
@@ -115,7 +127,8 @@
       "rating": 4,
       "color": "#4a3a1a",
       "rules": "",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "favorite": true
     },
     {
       "name": "Single Hand Solitaire",
@@ -124,7 +137,8 @@
       "rating": 3.5,
       "color": "#3a3a3a",
       "rules": "",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "favorite": false
     },
     {
       "name": "Jailbreak",
@@ -133,7 +147,8 @@
       "rating": 4.5,
       "color": "#4a4a2a",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
     },
     {
       "name": "Osmosis",
@@ -142,7 +157,8 @@
       "rating": 3.5,
       "color": "#3a2a2a",
       "rules": "",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "favorite": false
     }
   ]
 }
