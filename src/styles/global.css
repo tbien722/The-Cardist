@@ -36,7 +36,7 @@ nav ul {
 }
 
 nav ul a {
-  color: var(--text);
+  color: var(--gold);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -47,7 +47,7 @@ nav ul a {
 }
 
 nav ul a:hover {
-  color: var(--gold);
+  color: #e0c060;
 }
 
 .home-link {
@@ -62,7 +62,7 @@ h1 {
   font-size: 2.25rem;
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--text);
+  color: var(--gold);
   letter-spacing: 0.02em;
 }
 
@@ -71,7 +71,7 @@ h2 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   font-size: 1.75rem;
-  color: var(--text);
+  color: var(--gold);
 }
 
 /* ── Main layout ── */
@@ -242,7 +242,7 @@ select {
   z-index: 1;
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  color: #ffffff;
+  color: var(--gold);
   letter-spacing: 0.08em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
@@ -665,9 +665,9 @@ select {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.difficulty-Easy   { color: #6fbf73; }
-.difficulty-Medium { color: #e0c060; }
-.difficulty-Hard   { color: #d97a6c; }
+.difficulty-Easy   { color: #d99a4e; }
+.difficulty-Medium { color: #c97a7a; }
+.difficulty-Hard   { color: #7fa8c9; }
 
 .modal-difficulty {
   font-weight: 600;
@@ -676,6 +676,7 @@ select {
 /* ── Felt background (games page only for now) ── */
 .felt-bg {
   min-height: 100vh;
+  background-attachment: fixed;
   background-image:
     radial-gradient(ellipse at top left, rgba(26, 74, 58, 0.18), transparent 60%),
     radial-gradient(ellipse at bottom right, rgba(26, 74, 58, 0.14), transparent 60%),
@@ -894,9 +895,9 @@ select {
   display: inline-block;
 }
 
-.legend-dot.difficulty-Easy   { background: #6fbf73; }
-.legend-dot.difficulty-Medium { background: #e0c060; }
-.legend-dot.difficulty-Hard   { background: #d97a6c; }
+.legend-dot.difficulty-Easy   { background: #d99a4e; }
+.legend-dot.difficulty-Medium { background: #c97a7a; }
+.legend-dot.difficulty-Hard   { background: #7fa8c9; }
 
 .legend-star {
   width: 12px;
@@ -920,14 +921,14 @@ select {
 }
 
 .status-Want-to-Learn { color: #999; }
-.status-Learning      { color: #e0c060; }
-.status-Comfortable   { color: #7fb8d9; }
-.status-Clean         { color: #6fbf73; }
+.status-Learning      { color: #d99a4e; }
+.status-Comfortable   { color: #c97a7a; }
+.status-Clean         { color: #c9a84c; }
 
 .legend-dot.status-Want-to-Learn { background: #999; }
-.legend-dot.status-Learning      { background: #e0c060; }
-.legend-dot.status-Comfortable   { background: #7fb8d9; }
-.legend-dot.status-Clean         { background: #6fbf73; }
+.legend-dot.status-Learning      { background: #d99a4e; }
+.legend-dot.status-Comfortable   { background: #c97a7a; }
+.legend-dot.status-Clean         { background: #c9a84c; }
 
 .status-text { font-weight: 600; }
 
