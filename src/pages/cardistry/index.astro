@@ -1,18 +1,304 @@
 ---
 import TopNav from "../../components/TopNav.astro";
-import type { Card } from "../../types/card";
-import rawData from "../../data/cards.json";
-import DataCard from "../../components/DataCard.astro";
+import type { Move } from "../../types/cardistry";
+import rawData from "../../data/cardistry.json";
 import "../../styles/global.css";
----
 
+const moves = (rawData.moves as Move[]).sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
+
+const categoryOrder = ["Cuts", "Flourishes", "Fans", "Shuffles", "Springs", "Displays"];
+const presentCategories = categoryOrder.filter(c => moves.some(m => m.category === c));
+
+const categoryGroups = presentCategories.map(category => ({
+  category,
+  moves: moves.filter(m => m.category === category)
+}));
+---
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cards Landing Page</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cardistry</title>
+  </head>
+  <body>
     <TopNav />
-</body>
+    <main class="felt-bg">
+      <h1>Cardistry</h1>
+
+      <!-- Filter toolbar -->
+      <div class="filter-toolbar">
+        <label for="category-filter">Category</label>
+        <select id="category-filter">
+          <option value="all">All</option>
+          {presentCategories.map(cat => (
+            <option value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <label for="status-filter">Status</label>
+        <select id="status-filter">
+          <option value="all">All</option>
+          <option value="Want to Learn">Want to Learn</option>
+          <option value="Learning">Learning</option>
+          <option value="Comfortable">Comfortable</option>
+          <option value="Clean">Clean</option>
+        </select>
+
+        <label for="sort-select">Sort</label>
+        <select id="sort-select">
+          <option value="alpha">Alphabetical</option>
+          <option value="level">Level</option>
+          <option value="status">Status</option>
+        </select>
+
+        <input id="search-input" type="text" placeholder="Search by name..." />
+        <span id="move-count" class="card-count"></span>
+        <button id="legend-toggle" class="legend-toggle" aria-label="Show legend">?</button>
+      </div>
+
+      <div id="legend-panel" class="legend-panel">
+        <div class="legend-item"><span class="legend-dot status-Want-to-Learn"></span> Want to Learn</div>
+        <div class="legend-item"><span class="legend-dot status-Learning"></span> Learning</div>
+        <div class="legend-item"><span class="legend-dot status-Comfortable"></span> Comfortable</div>
+        <div class="legend-item"><span class="legend-dot status-Clean"></span> Clean</div>
+        <div class="legend-item">Level 0–3: move complexity</div>
+      </div>
+
+      <!-- Moves grouped by category -->
+      <div id="category-container">
+        {categoryGroups.map(group => (
+          <div class="series-group" data-category={group.category}>
+            <div class="series-header">
+              <h3 class="series-title">{group.category}</h3>
+              <span class="series-count-badge">{group.moves.length}</span>
+            </div>
+            <section class="game-grid">
+              {group.moves.map((move) => (
+                <button
+                  class="game-card"
+                  data-move={JSON.stringify(move)}
+                  data-category={move.category}
+                  data-status={move.status}
+                  aria-label={`View details for ${move.name}`}
+                >
+                  <div class="game-card-inner">
+                    <div class="game-card-face game-card-front" style={`--face-color: ${move.color};`}>
+                      <span class={`status-badge status-${move.status.replace(/\s+/g, "-")}`}>{move.status}</span>
+                      <span class="game-card-name">{move.name}</span>
+                      <span class="game-card-players">Level {move.level}</span>
+                    </div>
+                    <div class="game-card-face game-card-back">
+                      <div>
+                        <div class="game-card-back-label">Status</div>
+                        <div class="game-card-back-value">{move.status}</div>
+                      </div>
+                      <div>
+                        <div class="game-card-back-label">Level</div>
+                        <div class="game-card-back-value">{move.level}</div>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </section>
+          </div>
+        ))}
+      </div>
+
+      <!-- Modal -->
+      <div id="move-modal" class="modal hidden">
+        <div class="modal-content">
+          <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+          <h2 id="modal-title"></h2>
+          <div id="modal-gif" class="modal-gif"></div>
+          <ul id="modal-details"></ul>
+          <div id="modal-notes" class="modal-rules"></div>
+        </div>
+      </div>
+
+    </main>
+  </body>
+
+<script>
+  const modal = document.getElementById("move-modal") as HTMLDivElement;
+  const modalContent = modal.querySelector(".modal-content") as HTMLDivElement;
+  const titleEl = document.getElementById("modal-title") as HTMLHeadingElement;
+  const detailsEl = document.getElementById("modal-details") as HTMLUListElement;
+  const notesEl = document.getElementById("modal-notes") as HTMLDivElement;
+  const gifEl = document.getElementById("modal-gif") as HTMLDivElement;
+  const closeBtn = document.getElementById("close-modal") as HTMLButtonElement;
+
+  type MoveData = {
+    name: string;
+    category: string;
+    status: string;
+    level: number;
+    gif: string;
+    notes: string;
+  };
+
+  function closeModal() {
+    modal.classList.add("hidden");
+  }
+
+  function openModal(move: MoveData) {
+    titleEl.textContent = move.name;
+
+    gifEl.innerHTML = move.gif
+      ? `<img src="${move.gif}" alt="${move.name}" class="modal-gif-img" />`
+      : `<div class="gif-placeholder">GIF coming soon</div>`;
+
+    detailsEl.innerHTML = `
+      <li><strong>Category:</strong> ${move.category}</li>
+      <li><strong>Status:</strong> <span class="status-text status-${move.status.replace(/\s+/g, "-")}">${move.status}</span></li>
+      <li><strong>Level:</strong> ${move.level}</li>
+    `;
+
+    notesEl.innerHTML = move.notes
+      ? `<h3 class="rules-title">Notes</h3><p class="rules-text">${move.notes}</p>`
+      : `<p class="stars-unrated">No notes added yet.</p>`;
+
+    modal.classList.remove("hidden");
+  }
+
+  function attachListeners() {
+    document.querySelectorAll<HTMLButtonElement>(".game-card").forEach((el) => {
+      el.addEventListener("click", () => {
+        const raw = el.dataset.move;
+        if (!raw) return;
+        try { openModal(JSON.parse(raw)); } catch { return; }
+      });
+    });
+  }
+
+  attachListeners();
+  closeBtn.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+  });
+  modal.addEventListener("click", (e) => {
+    if (!modalContent.contains(e.target as Node)) closeModal();
+  });
+</script>
+
+<script>
+  const categorySelect = document.getElementById("category-filter") as HTMLSelectElement;
+  const statusSelect = document.getElementById("status-filter") as HTMLSelectElement;
+  const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
+  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+  const categoryContainer = document.getElementById("category-container") as HTMLElement;
+  const moveCountEl = document.getElementById("move-count") as HTMLSpanElement;
+  const legendToggle = document.getElementById("legend-toggle") as HTMLButtonElement;
+  const legendPanel = document.getElementById("legend-panel") as HTMLElement;
+
+  legendToggle.addEventListener("click", () => {
+    legendPanel.classList.toggle("open");
+    legendToggle.classList.toggle("active");
+  });
+
+  const allMoves = Array.from(document.querySelectorAll<HTMLButtonElement>(".game-card")).map(el => ({
+    el,
+    data: JSON.parse(el.dataset.move || '{}'),
+    category: el.dataset.category || '',
+    status: el.dataset.status || ''
+  }));
+
+  const STATUS_ORDER: Record<string, number> = {
+    "Want to Learn": 0, "Learning": 1, "Comfortable": 2, "Clean": 3
+  };
+
+  function applyFilters() {
+    const category = categorySelect.value;
+    const status = statusSelect.value;
+    const sort = sortSelect.value;
+    const search = searchInput.value.toLowerCase();
+
+    let filtered = allMoves.filter(move => {
+      const matchesCategory = category === "all" || move.category === category;
+      const matchesStatus = status === "all" || move.status === status;
+      const matchesSearch = move.data.name.toLowerCase().includes(search);
+      return matchesCategory && matchesStatus && matchesSearch;
+    });
+
+    filtered.sort((a, b) => {
+      if (sort === "alpha") return a.data.name.localeCompare(b.data.name);
+      if (sort === "level") return b.data.level - a.data.level;
+      if (sort === "status") return STATUS_ORDER[a.status] - STATUS_ORDER[b.status];
+      return 0;
+    });
+
+    moveCountEl.textContent = `${filtered.length} move${filtered.length !== 1 ? 's' : ''}`;
+
+    categoryContainer.innerHTML = '';
+
+    if (filtered.length === 0) {
+      categoryContainer.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 4l16 16M20 4L4 20"/></svg>
+          </div>
+          <div class="empty-state-title">No moves match</div>
+          <div class="empty-state-text">Try a different category, status, or search term.</div>
+          <button class="empty-state-reset" id="reset-filters">Reset filters</button>
+        </div>
+      `;
+      document.getElementById("reset-filters")?.addEventListener("click", () => {
+        categorySelect.value = "all";
+        statusSelect.value = "all";
+        searchInput.value = "";
+        applyFilters();
+      });
+      return;
+    }
+
+    const grouped = new Map<string, typeof filtered>();
+    filtered.forEach(move => {
+      if (!grouped.has(move.category)) grouped.set(move.category, []);
+      grouped.get(move.category)!.push(move);
+    });
+
+    grouped.forEach((groupMoves, category) => {
+      const groupDiv = document.createElement('div');
+      groupDiv.className = 'series-group';
+      groupDiv.dataset.category = category;
+
+      const header = document.createElement('div');
+      header.className = 'series-header';
+
+      const title = document.createElement('h3');
+      title.className = 'series-title';
+      title.textContent = category;
+
+      const badge = document.createElement('span');
+      badge.className = 'series-count-badge';
+      badge.textContent = String(groupMoves.length);
+
+      header.appendChild(title);
+      header.appendChild(badge);
+      groupDiv.appendChild(header);
+
+      const grid = document.createElement('section');
+      grid.className = 'game-grid';
+      groupMoves.forEach((move, i) => {
+        move.el.classList.remove('shuffle-in');
+        void move.el.offsetWidth;
+        move.el.style.animationDelay = `${i * 80}ms`;
+        move.el.classList.add('shuffle-in');
+        grid.appendChild(move.el);
+      });
+      groupDiv.appendChild(grid);
+
+      categoryContainer.appendChild(groupDiv);
+    });
+  }
+
+  categorySelect.addEventListener("change", applyFilters);
+  statusSelect.addEventListener("change", applyFilters);
+  sortSelect.addEventListener("change", applyFilters);
+  searchInput.addEventListener("input", applyFilters);
+
+  applyFilters();
+</script>
+
 </html>

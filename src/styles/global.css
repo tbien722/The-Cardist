@@ -903,3 +903,101 @@ select {
   height: 12px;
   fill: var(--gold);
 }
+
+/* ── Cardistry status badge (on card front) ── */
+.status-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 99px;
+  padding: 0.1rem 0.4rem;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-Want-to-Learn { color: #999; }
+.status-Learning      { color: #e0c060; }
+.status-Comfortable   { color: #7fb8d9; }
+.status-Clean         { color: #6fbf73; }
+
+.legend-dot.status-Want-to-Learn { background: #999; }
+.legend-dot.status-Learning      { background: #e0c060; }
+.legend-dot.status-Comfortable   { background: #7fb8d9; }
+.legend-dot.status-Clean         { background: #6fbf73; }
+
+.status-text { font-weight: 600; }
+
+/* ── Modal GIF area ── */
+.modal-gif {
+  margin-bottom: 1rem;
+}
+
+.modal-gif-img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+.gif-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-raised);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* I'm building a personal website with Astro to catalog my playing-card hobbies.
+Four sections: Decks (physical decks I own), Card Games (rules/games I play),
+Cardistry (moves I know), and a Wishlist. Tech stack: Astro + TypeScript,
+static JSON data files (no backend), dark gold-on-charcoal theme, committed
+to GitHub.
+
+Design system (global.css): CSS vars --gold (#c9a84c), --bg (#1a1a1a),
+--bg-card (#2a2a2a), --border (#3a3a3a), Playfair Display for headings,
+Inter for body. Shared patterns: .series-group/.series-header for category
+grouping, .filter-toolbar (dropdown + sort + search), .modal/.modal-content
+for detail popups, custom SVG star ratings (renderStars() function),
+.card-grid/.game-grid for layouts. A subtle felt-texture background
+(.felt-bg class, radial gold-green glows + faint diagonal weave, min-height:
+100vh) has been applied to all existing pages' <main> elements.
+
+Card Games section (src/pages/games/index.astro) — fully built:
+- Data: src/data/games.json — fields: name, category, players, rating,
+  color, rules, difficulty (Easy/Medium/Hard). Categories: Party, Slower,
+  Single Player. No icon field (removed — decided flat color only).
+- Types: src/types/game.ts matches above (minus icon).
+- Cards grouped by category, toolbar with category filter + difficulty
+  filter + sort (alpha/rating/players/difficulty) + search.
+- Cards have a 3D flip-on-hover interaction (.game-card-inner with
+  preserve-3d/rotateY) showing players/difficulty/rating on the back face.
+- Filtered/sorted results re-render with a staggered "shuffle-in" fade
+  animation (80ms delay per card, 0.45s ease).
+- Favorites: a hover-revealed star toggle button (top-left of each card)
+  persists to localStorage (key "cardgames-favorites"), favorited cards
+  get a permanent gold glow/outline via .is-favorited class. (In progress:
+  pinning a dedicated "Favorites" group to the top of the page is the next
+  step, not yet finished.)
+- Rules field is still empty in games.json — user is writing these
+  manually and will paste them in.
+- Modal shows category, players, difficulty (color-coded text), star
+  rating, and rules text (or "No rules added yet").
+
+Decks section (src/pages/decks/index.astro) — more mature reference:
+same filter/sort/modal pattern plus a zoomable horizontal timeline of
+acquisition dates, real card photos via a deckImages filename map, and
+a "limited edition" badge system.
+
+Cardistry and Wishlist sections: not yet built (folders/pages may exist
+per the file tree but have no content yet).
+
+Help me: [describe the specific feature or fix you want] */

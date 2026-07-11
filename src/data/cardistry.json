@@ -1,0 +1,22 @@
+{
+  "moves": [
+    { "name": "Charlier Cut", "category": "Cuts", "status": "Clean", "level": 0, "color": "#1a3a5c", "gif": "", "notes": "" },
+    { "name": "Revolution Cut", "category": "Cuts", "status": "Comfortable", "level": 1, "color": "#2d3a6b", "gif": "", "notes": "" },
+    { "name": "Sybil Cut", "category": "Cuts", "status": "Clean", "level": 1, "color": "#3a2a5c", "gif": "", "notes": "" },
+    { "name": "Quickbook", "category": "Cuts", "status": "Learning", "level": 1, "color": "#1a4a4a", "gif": "", "notes": "" },
+    { "name": "Swing Cut", "category": "Cuts", "status": "Clean", "level": 0, "color": "#2a3d4a", "gif": "", "notes": "" },
+    { "name": "Swivel Cut", "category": "Cuts", "status": "Clean", "level": 0, "color": "#1e3d2a", "gif": "", "notes": "" },
+    { "name": "Rotation Cut", "category": "Cuts", "status": "Comfortable", "level": 0, "color": "#4a3a1a", "gif": "", "notes": "" },
+
+    { "name": "Brad Pitt One Card Flip", "category": "Flourishes", "status": "Learning", "level": 1, "color": "#6b2d3e", "gif": "", "notes": "" },
+    { "name": "Flicker 1-Card Flip", "category": "Flourishes", "status": "Learning", "level": 1, "color": "#7a1f1f", "gif": "", "notes": "" },
+    { "name": "Bullet 1-Card Flair", "category": "Flourishes", "status": "Learning", "level": 1, "color": "#8b4000", "gif": "", "notes": "" },
+
+    { "name": "Thumb Fan", "category": "Fans", "status": "Comfortable", "level": 0, "color": "#4a4a2a", "gif": "", "notes": "" },
+    { "name": "Pressure Fan", "category": "Fans", "status": "Comfortable", "level": 1, "color": "#3a2a2a", "gif": "", "notes": "" },
+    { "name": "Smear Fan (One Handed)", "category": "Fans", "status": "Learning", "level": 0, "color": "#7a5c00", "gif": "", "notes": "" },
+
+    { "name": "Riffle Shuffle", "category": "Shuffles", "status": "Clean", "level": 0, "color": "#1a4a3a", "gif": "", "notes": "" },
+    { "name": "Faro Shuffle", "category": "Shuffles", "status": "Learning", "level": 1, "color": "#3a3a3a", "gif": "", "notes": "" }
+  ]
+}
