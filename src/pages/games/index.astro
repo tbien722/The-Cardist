@@ -300,7 +300,7 @@ grid.className = 'game-grid';
 groupGames.forEach((game, i) => {
   game.el.classList.remove('shuffle-in');
   void game.el.offsetWidth; // force reflow to restart animation
-  game.el.style.animationDelay = `${i * 30}ms`;
+  game.el.style.animationDelay = `${i * 80}ms`;
   game.el.classList.add('shuffle-in');
   grid.appendChild(game.el);
 });
