@@ -51,7 +51,19 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
 
         <input id="search-input" type="text" placeholder="Search by name..." />
         <span id="game-count" class="card-count"></span>
+        <button id="legend-toggle" class="legend-toggle" aria-label="Show legend">?</button>
       </div>
+        <!-- Legend -->
+      <div id="legend-panel" class="legend-panel">
+         <div class="legend-item"><span class="legend-dot difficulty-Easy"></span> Easy</div>
+        <div class="legend-item"><span class="legend-dot difficulty-Medium"></span> Medium</div>
+        <div class="legend-item"><span class="legend-dot difficulty-Hard"></span> Hard</div>
+        <div class="legend-item">
+            <svg class="legend-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.9L22 9.5l-5.5 5.2L18 22l-6-3.8L6 22l1.5-7.3L2 9.5l7.1-0.6z"/></svg>
+            Favorite
+        </div>
+        <div class="legend-item">★★★★★ Rating out of 5</div>
+        </div>
 
       <!-- Games grouped by category -->
       <div id="category-container">
@@ -82,8 +94,19 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
       <span class="game-card-players">👥 {game.players}</span>
     </div>
     <div class="game-card-face game-card-back">
-      <!-- unchanged -->
-    </div>
+  <div>
+    <div class="game-card-back-label">Players</div>
+    <div class="game-card-back-value">{game.players}</div>
+  </div>
+  <div>
+    <div class="game-card-back-label">Difficulty</div>
+    <div class="game-card-back-value">{game.difficulty}</div>
+  </div>
+  <div>
+    <div class="game-card-back-label">Rating</div>
+    <div class="game-card-back-value">{game.rating || "—"}</div>
+  </div>
+</div>
   </div>
 </button>
               ))}
@@ -114,6 +137,13 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
   const rulesElRaw = document.getElementById("modal-rules") as HTMLDivElement | null;
   const closeBtnRaw = document.getElementById("close-modal") as HTMLButtonElement | null;
   const starsElRaw = document.getElementById("modal-stars") as HTMLDivElement | null;
+  const legendToggle = document.getElementById("legend-toggle") as HTMLButtonElement;
+  const legendPanel = document.getElementById("legend-panel") as HTMLElement;
+
+  legendToggle.addEventListener("click", () => {
+  legendPanel.classList.toggle("open");
+  legendToggle.classList.toggle("active");
+  });
 
   if (!modalRaw || !modalContentRaw || !titleElRaw || !detailsElRaw || !closeBtnRaw) {
     throw new Error("Modal elements missing from DOM");
@@ -262,13 +292,36 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
 
     gameCountEl.textContent = `${filtered.length} game${filtered.length !== 1 ? 's' : ''}`;
 
+    categoryContainer.innerHTML = '';
+
+if (filtered.length === 0) {
+  categoryContainer.innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 4l16 16M20 4L4 20"/></svg>
+      </div>
+      <div class="empty-state-title">No games match</div>
+      <div class="empty-state-text">Try a different category, difficulty, or search term.</div>
+      <button class="empty-state-reset" id="reset-filters">Reset filters</button>
+    </div>
+  `;
+  document.getElementById("reset-filters")?.addEventListener("click", () => {
+    categorySelect.value = "all";
+    difficultySelect.value = "all";
+    searchInput.value = "";
+    applyFilters();
+  });
+  return;
+}
+
+
+
     const grouped = new Map<string, typeof filtered>();
     filtered.forEach(game => {
       if (!grouped.has(game.category)) grouped.set(game.category, []);
       grouped.get(game.category)!.push(game);
     });
 
-    categoryContainer.innerHTML = '';
     grouped.forEach((groupGames, category) => {
       const groupDiv = document.createElement('div');
       groupDiv.className = 'series-group';

@@ -789,3 +789,117 @@ select {
   fill: var(--gold);
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
 }
+
+/* ── Empty state ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 1rem;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.empty-state-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+
+.empty-state-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--text-dim);
+  stroke-width: 1.5;
+}
+
+.empty-state-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.empty-state-text {
+  font-size: 0.85rem;
+  max-width: 280px;
+}
+
+.empty-state-reset {
+  margin-top: 0.25rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.empty-state-reset:hover {
+  border-color: var(--gold-dim);
+}
+
+/* ── Legend ── */
+.legend-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.legend-toggle:hover,
+.legend-toggle.active {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+.legend-panel {
+  display: none;
+  flex-basis: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.legend-panel.open {
+  display: flex;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.difficulty-Easy   { background: #6fbf73; }
+.legend-dot.difficulty-Medium { background: #e0c060; }
+.legend-dot.difficulty-Hard   { background: #d97a6c; }
+
+.legend-star {
+  width: 12px;
+  height: 12px;
+  fill: var(--gold);
+}
