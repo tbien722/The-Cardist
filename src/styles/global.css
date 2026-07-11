@@ -36,7 +36,7 @@ nav ul {
 }
 
 nav ul a {
-  color: var(--gold);
+  color: var(--text);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -47,7 +47,7 @@ nav ul a {
 }
 
 nav ul a:hover {
-  color: #e0c060;
+  color: var(--gold);
 }
 
 .home-link {
@@ -62,7 +62,7 @@ h1 {
   font-size: 2.25rem;
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--gold);
+  color: var(--text);
   letter-spacing: 0.02em;
 }
 
@@ -71,7 +71,7 @@ h2 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   font-size: 1.75rem;
-  color: var(--gold);
+  color: var(--text);
 }
 
 /* ── Main layout ── */
@@ -242,7 +242,7 @@ select {
   z-index: 1;
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  color: var(--gold);
+  color: #ffffff;
   letter-spacing: 0.08em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
@@ -921,12 +921,12 @@ select {
 }
 
 .status-Want-to-Learn { color: #999; }
-.status-Learning      { color: #d99a4e; }
+.status-Learning { color: #d9622e; }
 .status-Comfortable   { color: #c97a7a; }
 .status-Clean         { color: #c9a84c; }
 
 .legend-dot.status-Want-to-Learn { background: #999; }
-.legend-dot.status-Learning      { background: #d99a4e; }
+.legend-dot.status-Learning { background: #d9622e; }
 .legend-dot.status-Comfortable   { background: #c97a7a; }
 .legend-dot.status-Clean         { background: #c9a84c; }
 
