@@ -8,5 +8,4 @@ export type Game = {
   color: string;
   rules: string;
   difficulty: Difficulty;
-  icon: string; // inline SVG markup, rendered via set:html
 };

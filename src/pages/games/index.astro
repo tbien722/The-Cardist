@@ -72,7 +72,6 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
                   aria-label={`View details for ${game.name}`}
                 >
                   <span class={`difficulty-badge difficulty-${game.difficulty}`}>{game.difficulty}</span>
-                  <span class="game-card-icon" set:html={game.icon} />
                   <span class="game-card-name">{game.name}</span>
                   <span class="game-card-players">👥 {game.players}</span>
                 </button>
