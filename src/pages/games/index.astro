@@ -33,11 +33,20 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
           ))}
         </select>
 
+        <label for="difficulty-filter">Difficulty</label>
+        <select id="difficulty-filter">
+          <option value="all">All</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+
         <label for="sort-select">Sort</label>
         <select id="sort-select">
           <option value="alpha">Alphabetical</option>
           <option value="rating">Top Rated</option>
           <option value="players">Player Count</option>
+          <option value="difficulty">Difficulty</option>
         </select>
 
         <input id="search-input" type="text" placeholder="Search by name..." />
@@ -55,18 +64,18 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
             <section class="game-grid">
               {group.games.map((game) => (
                 <button
-  class="game-card"
-  style={`background-color: ${game.color};`}
-  data-game={JSON.stringify(game)}
-  data-category={game.category}
-  data-difficulty={game.difficulty}
-  aria-label={`View details for ${game.name}`}
->
-  <span class={`difficulty-badge difficulty-${game.difficulty}`}>{game.difficulty}</span>
-  <span class="game-card-icon" set:html={game.icon} />
-  <span class="game-card-name">{game.name}</span>
-  <span class="game-card-players">👥 {game.players}</span>
-</button>
+                  class="game-card"
+                  style={`background-color: ${game.color};`}
+                  data-game={JSON.stringify(game)}
+                  data-category={game.category}
+                  data-difficulty={game.difficulty}
+                  aria-label={`View details for ${game.name}`}
+                >
+                  <span class={`difficulty-badge difficulty-${game.difficulty}`}>{game.difficulty}</span>
+                  <span class="game-card-icon" set:html={game.icon} />
+                  <span class="game-card-name">{game.name}</span>
+                  <span class="game-card-players">👥 {game.players}</span>
+                </button>
               ))}
             </section>
           </div>
@@ -147,6 +156,7 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
     detailsEl.innerHTML = `
       <li><strong>Category:</strong> ${game.category}</li>
       <li><strong>Players:</strong> ${game.players}</li>
+      <li><strong>Difficulty:</strong> <span class="modal-difficulty difficulty-${game.difficulty}">${game.difficulty}</span></li>
     `;
 
     if (rulesEl) {
@@ -187,11 +197,14 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
     players: string;
     rating: number;
     rules: string;
+    difficulty: string;
+    icon: string;
   };
 </script>
 
 <script>
   const categorySelect = document.getElementById("category-filter") as HTMLSelectElement;
+  const difficultySelect = document.getElementById("difficulty-filter") as HTMLSelectElement;
   const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
   const searchInput = document.getElementById("search-input") as HTMLInputElement;
   const categoryContainer = document.getElementById("category-container") as HTMLElement;
@@ -200,18 +213,23 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
   const allGames = Array.from(document.querySelectorAll<HTMLButtonElement>(".game-card")).map(el => ({
     el,
     data: JSON.parse(el.dataset.game || '{}'),
-    category: el.dataset.category || ''
+    category: el.dataset.category || '',
+    difficulty: el.dataset.difficulty || ''
   }));
+
+  const DIFFICULTY_ORDER: Record<string, number> = { Easy: 0, Medium: 1, Hard: 2 };
 
   function applyFilters() {
     const category = categorySelect.value;
+    const difficulty = difficultySelect.value;
     const sort = sortSelect.value;
     const search = searchInput.value.toLowerCase();
 
     let filtered = allGames.filter(game => {
       const matchesCategory = category === "all" || game.category === category;
+      const matchesDifficulty = difficulty === "all" || game.difficulty === difficulty;
       const matchesSearch = game.data.name.toLowerCase().includes(search);
-      return matchesCategory && matchesSearch;
+      return matchesCategory && matchesDifficulty && matchesSearch;
     });
 
     filtered.sort((a, b) => {
@@ -226,6 +244,9 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
       }
       if (sort === "players") {
         return parseInt(a.data.players) - parseInt(b.data.players);
+      }
+      if (sort === "difficulty") {
+        return DIFFICULTY_ORDER[a.difficulty] - DIFFICULTY_ORDER[b.difficulty];
       }
       return 0;
     });
@@ -270,6 +291,7 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
   }
 
   categorySelect.addEventListener("change", applyFilters);
+  difficultySelect.addEventListener("change", applyFilters);
   sortSelect.addEventListener("change", applyFilters);
   searchInput.addEventListener("input", applyFilters);
 
