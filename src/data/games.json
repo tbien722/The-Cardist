@@ -6,7 +6,7 @@
       "players": "2",
       "rating": 4,
       "color": "#7a1f1f",
-      "rules": "",
+      "rules": "Match the two cards in the middle up one or down one. Setup: 5 cards on either side and 2 singles in the middle. Flip over the 2 in the middle to begin. Use the side cards one at a time when both players out of moves.",
       "difficulty": "Easy",
       "favorite": false
     },
@@ -16,7 +16,7 @@
       "players": "2–∞",
       "rating": 3.5,
       "color": "#8b4000",
-      "rules": "",
+      "rules": "Deal four cards and pass a fifth from the deck to match 4 cards of the same value then grab a spoon when you have 4 of a kind.",
       "difficulty": "Easy",
       "favorite": false
     },
@@ -26,7 +26,7 @@
       "players": "3–10",
       "rating": 4.25,
       "color": "#7a5c00",
-      "rules": "",
+      "rules": "Guessing game of how many rounds you win. Value order low to high: 4-7, J, Q, K, A, 2, 3 (no 8, 9, 10). Suit order low to high: diamonds, spades, hearts, clubs. The trump card in the middle makes the next card in the series the best (4 makes 5 the best card). If two people draw the same value card, they cancel out. If you guess incorrectly how many rounds, spell another letter of Fodinha.",
       "difficulty": "Medium",
       "favorite": false
     },
@@ -36,7 +36,7 @@
       "players": "2–5",
       "rating": 3.5,
       "color": "#6b2d3e",
-      "rules": "",
+      "rules": "Draw cards to communal pile from each player with the evenly distributed deck, slapping the middle when there is a jack, a pair, or a sandwich drawn. Person with the most fingers on the card gets the cards. Person with the whole deck wins.",
       "difficulty": "Easy",
       "favorite": false
     },
@@ -46,7 +46,7 @@
       "players": "2–4",
       "rating": 5,
       "color": "#1a3a5c",
-      "rules": "",
+      "rules": "Trick-based game with goal of gathering points through addition and strategy.",
       "difficulty": "Hard",
       "favorite": true
     },
@@ -56,7 +56,7 @@
       "players": "2–6",
       "rating": 5,
       "color": "#1a4a3a",
-      "rules": "",
+      "rules": "Deal 4 cards and look at only two. Cycle grabbing a fifth and replacing it with one of your current cards, or discarding it into the discard pile. Person with lowest tally wins. End by any person declaring the last round during their turn, then everyone else gets one more draw. Special rules: if one of your cards is the same as the top card in discard pile, you can place it on top to get rid of it (only one person can do this). If you put the wrong card, draw another blind card to your deck. A placed queen in discard allows you to look at any card in your deck. A placed jack allows you to change any two cards in anyone's deck (A-10 is normal with A as 1, J is 11, Q is 12, red king is 0, and black king is 15).",
       "difficulty": "Medium",
       "favorite": true
     },
@@ -66,7 +66,7 @@
       "players": "2–5",
       "rating": 3.5,
       "color": "#2d3a6b",
-      "rules": "",
+      "rules": "Each player with an evenly distributed deck matches pairs of cards in their hand (color and number) while avoiding the one joker in the deck. Take turns picking a random card from any other player. Game ends when any player only has the joker in their hand or no cards. Most pairs wins.",
       "difficulty": "Medium",
       "favorite": false
     },
@@ -76,17 +76,17 @@
       "players": "2–6",
       "rating": 4.5,
       "color": "#1a4a4a",
-      "rules": "",
+      "rules": "Turn-based Indian game where you play 7 of hearts first, then the next person has to play another 7 of a different suit, or play within that suit one card above or below (a 6 or 8 of hearts). The cards are placed out solitaire style so you can add a card above or below on any group once the game gets going. At 4 cards left, you must say '4 page' and then either sure or not sure. Sure if your 'path' to using the rest of your cards is unlocked, not sure if you are waiting on others to place their cards.",
       "difficulty": "Medium",
       "favorite": false
-   },
+    },
     {
       "name": "Pasoy Dos",
       "category": "Slower",
       "players": "2–4",
       "rating": 3.75,
       "color": "#3a2a5c",
-      "rules": "",
+      "rules": "3 players: Someone puts the 2 of diamonds in the middle, then that person begins by playing a poker hand of their choice. The next players have to play the same hand (high card, pair, etc.) but a better version. Once nobody can play a better hand, the last person to play their hand gets to choose the next hand. The first person to play all their cards wins. 4 players: Everyone gets 13 cards, everyone must make a hand of 3, a hand of 5, and a hand of 5. Each hand must be better than the last, and everyone flips each set at the same time (3 first, then worse 5, then best 5). The 3 set is worth 4, the first 5 is worth 6, and the second 5 is worth 10. First to 121.",
       "difficulty": "Medium",
       "favorite": false
     },
@@ -96,7 +96,7 @@
       "players": "3–5",
       "rating": 4.75,
       "color": "#2a1a4a",
-      "rules": "",
+      "rules": "Split cards evenly in group (if spare cards, get rid of 2 of clubs and spades, 3 of clubs and spades…). Object is to gain as little points as possible. Each heart card gained is 1 point, queen of spades is 13. All other cards worth 0. Gameplay: Pass three cards of your choice to the person on your left. Start with the person who dealt; the suit of the card they play must be played by other players if possible, and if they don't have any of that suit then they play any card they want. Whoever has the highest card within the suit of the original play gains those cards. If a player has all hearts and the queen, they score 0 and everyone else scores 26.",
       "difficulty": "Hard",
       "favorite": true
     },
@@ -106,7 +106,7 @@
       "players": "2–4",
       "rating": 3.5,
       "color": "#1e3d2a",
-      "rules": "",
+      "rules": "Deal 7–10 cards each (based on player count). Draw from the deck or discard pile, aiming to form sets (same rank) or runs (consecutive same suit). Discard one card to end your turn. First to lay down all cards in valid sets/runs wins.",
       "difficulty": "Medium",
       "favorite": false
     },
@@ -116,7 +116,7 @@
       "players": "2–4",
       "rating": 3,
       "color": "#2a3d4a",
-      "rules": "",
+      "rules": "Deal 7 cards each. Draw and discard each turn, laying down sets (3+ same rank) or runs (3+ consecutive same suit) once you have a valid combination. First to empty their hand wins; leftover cards count against you.",
       "difficulty": "Easy",
       "favorite": false
     },
@@ -136,7 +136,7 @@
       "players": "1",
       "rating": 3.5,
       "color": "#3a3a3a",
-      "rules": "",
+      "rules": "Hold the whole deck face down, draw four cards on top of the deck. Discard cards until the last face down card is drawn or there are no cards left. Rules: Always looking at the first and fourth cards. If they match in suit, discard the middle two, if they match in value, discard all four. Else, draw.",
       "difficulty": "Easy",
       "favorite": false
     },
@@ -146,7 +146,7 @@
       "players": "1",
       "rating": 4.5,
       "color": "#4a4a2a",
-      "rules": "",
+      "rules": "Goal is to let the joker escape. Start with joker in center of a 3x3, where orthogonal sides have 6 face-down cards, and diagonal sides have 2 face-down cards, all with one more card face-up on top. Joker can only escape orthogonally, walls are cleared by matching numerical values of any combo of red and black cards (3+2+jack(11) of red, and 5+8+3 of black both equal 16). Support pile can be drawn and placed on top of joker if stuck, but no cards can be on top of joker to escape.",
       "difficulty": "Medium",
       "favorite": false
     },
@@ -156,7 +156,7 @@
       "players": "1",
       "rating": 3.5,
       "color": "#3a2a2a",
-      "rules": "",
+      "rules": "Solitaire style game with goal of making 4 piles of cards divided by suit. Start with 4 face-up piles of 4 cards each and one 'foundation' card next to the top pile. Rest of cards can be looked at 3 at a time only using the top card. Cards with same suit as the foundation card can be added, which allows only the next row down pile to place the same cards as the foundation pile (if only jack and 5 in top pile, the next pile can only play those two — the other two rows can't play any). Win once all four piles have all cards played.",
       "difficulty": "Medium",
       "favorite": false
     }
