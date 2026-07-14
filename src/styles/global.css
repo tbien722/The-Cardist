@@ -949,3 +949,66 @@ select {
   font-size: 0.85rem;
   font-style: italic;
 }
+
+@media (max-width: 640px) {
+  /* Nav */
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+  }
+
+  /* Landing page */
+  .landing-main {
+    height: auto;
+    min-height: 100vh;
+  }
+  body:has(.landing-main) {
+    overflow: auto;
+  }
+  .landing-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, minmax(140px, 1fr));
+  }
+  .site-title {
+    font-size: 1.6rem;
+  }
+  .landing-label {
+    font-size: 1.6rem;
+  }
+
+  /* Filter toolbar */
+  .filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .filter-toolbar label {
+    margin-top: 0.25rem;
+  }
+  .card-count {
+    margin-left: 0;
+    text-align: right;
+  }
+
+  /* Grids */
+  .card-grid,
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Modal */
+  .modal-content {
+    width: 90vw;
+    max-width: 340px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  /* Flip cards: switch from hover to tap */
+  .game-card:hover .game-card-inner {
+    transform: none;
+  }
+  .game-card.flipped .game-card-inner {
+    transform: rotateY(180deg);
+  }
+}

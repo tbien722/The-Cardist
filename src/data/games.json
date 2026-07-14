@@ -126,7 +126,7 @@
       "players": "1",
       "rating": 4,
       "color": "#4a3a1a",
-      "rules": "",
+      "rules": "Deal cards into 7 tableau piles (1–7 cards, top card face up). Build down in alternating colors on the tableau, build up by suit in the 4 foundation piles starting from Ace. Draw from the deck to find playable cards. Win by moving all cards to the foundations.",
       "difficulty": "Easy",
       "favorite": true
     },
