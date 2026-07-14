@@ -220,6 +220,19 @@ const categoryGroups = Array.from(new Set(games.map(g => g.category))).map(categ
     });
   }
 
+
+  if (window.matchMedia("(max-width: 640px)").matches) {
+  document.querySelectorAll(".game-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if (!card.classList.contains("flipped")) {
+        e.stopPropagation();
+        e.preventDefault();
+        card.classList.toggle("flipped");
+      }
+    });
+  });
+  }
+
   attachGameListeners();
   closeBtn.addEventListener("click", closeModal);
 

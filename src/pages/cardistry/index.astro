@@ -172,6 +172,18 @@ const categoryGroups = presentCategories.map(category => ({
     });
   }
 
+  if (window.matchMedia("(max-width: 640px)").matches) {
+  document.querySelectorAll(".game-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if (!card.classList.contains("flipped")) {
+        e.stopPropagation();
+        e.preventDefault();
+        card.classList.toggle("flipped");
+      }
+    });
+  });
+  }
+
   attachListeners();
   closeBtn.addEventListener("click", closeModal);
   document.addEventListener("keydown", (e) => {
