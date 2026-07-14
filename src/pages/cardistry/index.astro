@@ -176,11 +176,11 @@ const categoryGroups = presentCategories.map(category => ({
   document.querySelectorAll(".game-card").forEach(card => {
     card.addEventListener("click", (e) => {
       if (!card.classList.contains("flipped")) {
-        e.stopPropagation();
+        e.stopImmediatePropagation();
         e.preventDefault();
         card.classList.toggle("flipped");
       }
-    });
+    }, true); // capture phase — runs before attachGameListeners' click handler
   });
   }
 
