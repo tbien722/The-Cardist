@@ -352,17 +352,25 @@ select {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  font-size: 1.1rem;
-  background: none;
-  border: none;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 50%;
   cursor: pointer;
-  color: var(--text-dim);
-  transition: color 0.15s ease;
+  color: var(--text);
+  transition: background 0.15s ease, border-color 0.15s ease;
   line-height: 1;
 }
 
 .modal-close:hover {
-  color: var(--text);
+  background: #4a4a4a;
+  border-color: var(--gold-dim);
+  color: #ffffff;
 }
 
 /* ── Timeline ── */
