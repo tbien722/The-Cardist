@@ -379,6 +379,346 @@
       "rating": 3,
       "acquired_from": "Disney Springs, Orlando",
       "limited": false
+    },
+    {
+      "name": "140th Anniversary",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2026-08-16",
+      "deckType": "bicycle140th",
+      "rating": 0,
+      "acquired_from": "Laughlin, AZ",
+      "limited": false
+    },
+    {
+      "name": "Byzantine",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2026-08-31",
+      "deckType": "bicyclebyzantine",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Lightning McQueen",
+      "brand": "Bicycle",
+      "series": "Collabs",
+      "acquired": "2026-08-31",
+      "deckType": "bicyclelightningmcqueen",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Magenta",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2026-08-31",
+      "deckType": "bicyclemagenta",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Metalluxe Red",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2026-08-31",
+      "deckType": "bicyclemetalluxered",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Snake",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2026-08-16",
+      "deckType": "bicyclesnake",
+      "rating": 0,
+      "acquired_from": "Laughlin, AZ",
+      "limited": false
+    },
+    {
+      "name": "Stars & Stripes",
+      "brand": "Bicycle",
+      "series": "Signature",
+      "acquired": "2026-08-31",
+      "deckType": "bicyclestarstripes",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Checkers",
+      "brand": "Games Hub",
+      "series": "Novelty",
+      "acquired": "2026-08-31",
+      "deckType": "gameshubcheckers",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Dad Jokes",
+      "brand": "Games Hub",
+      "series": "Novelty",
+      "acquired": "2026-08-31",
+      "deckType": "gameshubdadjokes",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Mango",
+      "brand": "Games Hub",
+      "series": "Novelty",
+      "acquired": "2026-08-31",
+      "deckType": "gameshubmango",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Blue Checkers",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-09-14",
+      "deckType": "miscbluecheckers",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Breckenridge",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-11-03",
+      "deckType": "miscbreckenridge",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Cat Cards",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-02-18",
+      "deckType": "misccatcards",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Dark Cards",
+      "brand": "Misc",
+      "series": "Signature",
+      "acquired": "2025-05-07",
+      "deckType": "miscdarkcards",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Detroit",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-07-22",
+      "deckType": "miscdetroit",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Iceland",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-08-11",
+      "deckType": "misciceland",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Idaho",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-06-20",
+      "deckType": "miscidaho",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Incredible Idaho",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-07-04",
+      "deckType": "miscincredibleidaho",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Italy",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-12-15",
+      "deckType": "miscitaly",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Jaws",
+      "brand": "Misc",
+      "series": "Collabs",
+      "acquired": "2025-03-09",
+      "deckType": "miscjaws",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Lazy Ones",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-09-22",
+      "deckType": "misclazyones",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Lightning McQueen (Mini)",
+      "brand": "Misc",
+      "series": "Miniature",
+      "acquired": "2026-08-31",
+      "deckType": "misclightningmcqueen",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Long Room",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-01-30",
+      "deckType": "misclongroom",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Minecraft",
+      "brand": "Misc",
+      "series": "Miniature",
+      "acquired": "2026-08-31",
+      "deckType": "miscminecraft",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Mini Cards",
+      "brand": "Misc",
+      "series": "Miniature",
+      "acquired": "2025-10-18",
+      "deckType": "miscminicards",
+      "rating": 0,
+      "acquired_from": "Atlanta, GA",
+      "limited": false
+    },
+    {
+      "name": "Money Gold",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-04-14",
+      "deckType": "miscmoneygold",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Moon",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2026-09-01",
+      "deckType": "miscmoon",
+      "rating": 0,
+      "acquired_from": "Mills Museum",
+      "limited": false
+    },
+    {
+      "name": "Nashville",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2025-11-08",
+      "deckType": "miscnashville",
+      "rating": 0,
+      "acquired_from": "Nashville, TN",
+      "limited": false
+    },
+    {
+      "name": "National Parks",
+      "brand": "Misc",
+      "series": "Novelty",
+      "acquired": "2024-08-30",
+      "deckType": "miscnationalparks",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Naipes",
+      "brand": "Misc",
+      "series": "Signature",
+      "acquired": "2024-10-22",
+      "deckType": "miscnaipes",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Peanuts",
+      "brand": "Misc",
+      "series": "Collabs",
+      "acquired": "2026-08-31",
+      "deckType": "miscpeanuts",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
+    },
+    {
+      "name": "Romagnole",
+      "brand": "Misc",
+      "series": "Signature",
+      "acquired": "2025-12-03",
+      "deckType": "miscromagnole",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Venezia",
+      "brand": "Misc",
+      "series": "Signature",
+      "acquired": "2026-01-19",
+      "deckType": "miscvenezia",
+      "rating": 0,
+      "acquired_from": "",
+      "limited": false
+    },
+    {
+      "name": "Peaky Blinders",
+      "brand": "Theory11",
+      "series": "Collabs",
+      "acquired": "2026-08-31",
+      "deckType": "theory11peakyblinders",
+      "rating": 0,
+      "acquired_from": "Minneapolis, MN",
+      "limited": false
     }
   ]
 }
